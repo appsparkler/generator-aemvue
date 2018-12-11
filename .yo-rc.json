@@ -1,0 +1,9 @@
+{
+  "generator-node": {
+    "promptValues": {
+      "authorName": "Akash",
+      "authorEmail": "ashah10@sapient.com",
+      "authorUrl": "appsparkler.com"
+    }
+  }
+}
