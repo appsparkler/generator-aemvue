@@ -1,0 +1,50 @@
+/* eslint-disable*/
+"use strict";
+const path = require("path");
+const assert = require("yeoman-assert");
+const helpers = require("yeoman-test");
+
+describe("generator-hello-1:template-container", () => {
+  beforeAll(() => {
+    const localConfig = {
+      appName: "aem-app",
+      templateContainer: {
+        basePagePaths: [
+          "core/wcm/components/page/v2/page",
+          "/apps/aem-app/src/templates/global/BasePage/aem-component"
+        ]
+      }
+    };
+    const prompts = {
+      "template.templateName": "TestPage",
+      "template.title": "Test Page Template",
+      "template.description": "A template for Test Page Template.",
+      "template.subFolder": "global",
+      "template.allowedPaths": "/content(/*)",
+      "template.ranking": 100,
+      "template.slingType": "sling:resourceType",
+      "template.resourceType":
+        "/apps/aem-app/src/templates/global/TestPage/aem-component",
+      "component.resourceType":
+        "/apps/aem-app/src/templates/global/BasePage/aem-component"
+    };
+    return helpers
+      .run(path.join(__dirname, "../generators/template-container"))
+      .withLocalConfig(localConfig)
+      .withPrompts(prompts)
+      .withArguments(["TestPage"]);
+  });
+
+  it("creates the Folder JCR .content.xml file", () => {
+    assert.file(["src/templates/global/TestPage/.content.xml"]);
+  });
+
+  it("creates the Template JCR .content.xml file", () => {
+    assert.file(["src/templates/global/TestPage/aem-tmpl/.content.xml"]);
+  });
+
+  it("creates the Component JCR .content.xml file", () => {
+    assert.file(["src/templates/global/TestPage/aem-component/.content.xml"]);
+  });
+
+});
