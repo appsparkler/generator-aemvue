@@ -32,6 +32,7 @@ module.exports = class extends Generator {
     copyComponentJCR.call(this);
     copyConfigFile.call(this);
     copyVueComponentFile.call(this);
+    copyChildComponentsFile.call(this);
   }
 
   end() {
@@ -40,6 +41,16 @@ module.exports = class extends Generator {
 };
 
 // private functions
+function copyChildComponentsFile() {
+  const {subFolder, templateName} = this.answers.template;
+  this.fs.copy(
+    this.templatePath("aem-component/child-page-components.html"),
+    this.destinationPath(
+      `./src/templates/${subFolder}/${templateName}/aem-component/child-page-components.html`
+    )
+  );
+}
+
 function copyConfigFile() {
   let {subFolder, templateName} = this.answers.template;
 
@@ -63,6 +74,7 @@ function copyVueComponentFile() {
     this.answers
   );
 }
+
 function welcomeTheUser() {
   this.log(
     yosay(
@@ -113,8 +125,7 @@ function copyComponentJCR() {
 }
 
 function copyFolderJCR() {
-  const {templateName} = this.options;
-  const {subFolder} = this.answers.template;
+  const {subFolder, templateName} = this.answers.template;
   this.fs.copy(
     this.templatePath("_content.xml"),
     this.destinationPath(

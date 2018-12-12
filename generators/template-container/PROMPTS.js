@@ -5,18 +5,21 @@ module.exports = function() {
   //
   let answers = {};
   const PROMPTS = [
+    // template.templateName
     {
       type: "input",
       name: "template.templateName",
       message: "What is the name for this template (the template-folder-name)?",
       default: `${templateName}`
     },
+    // template.title
     {
       type: "input",
       name: "template.title",
       message: "What is the title for this template?",
       default: `${templateName} Template`
     },
+    // template.description
     {
       type: "input",
       name: "template.description",
@@ -25,6 +28,7 @@ module.exports = function() {
         return `A template for ${answers.template.title}.`;
       }
     },
+    // template.subFolder
     {
       type: "list",
       name: "template.subFolder",
@@ -32,6 +36,7 @@ module.exports = function() {
       choices: ["global", "content"],
       default: "global"
     },
+    // template.allowedPaths
     {
       type: "input",
       name: "template.allowedPaths",
@@ -39,27 +44,31 @@ module.exports = function() {
         "What paths are allowed to access this template (comma-seperated for multiple items)?",
       default: "/content(/*)"
     },
+    // template.ranking
     {
       type: "input",
       name: "template.ranking",
       message: "What is the ranking for this template?",
       default: 100
     },
+    // template.slingType
     {
       type: "list",
       name: "template.slingType",
       message: "please select type?",
-      choices: ["sling:resourceType", "sling:superResourceType"],
-      default: "sling:resourceType"
+      choices: ["sling:superResourceType", "sling:resourceType"],
+      default: "sling:resourceSuperType"
     },
-    // component promptForTemplateDetails_V2
+    // component.resourceType
     {
       type: "list",
       name: "component.resourceType",
-      message: "please select the sling-resource-super-type for this component?",
+      message:
+        "please select the sling-resource-super-type for this component?",
       choices: templateContainerConfig.basePagePaths,
       default: templateContainerConfig.basePagePaths[1]
     }
   ];
+
   return PROMPTS;
 };
