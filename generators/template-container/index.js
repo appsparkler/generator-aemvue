@@ -30,6 +30,8 @@ module.exports = class extends Generator {
     copyTemplateJCR.call(this);
     copyFolderJCR.call(this);
     copyComponentJCR.call(this);
+    copyConfigFile.call(this);
+    copyVueComponentFile.call(this);
   }
 
   end() {
@@ -38,6 +40,29 @@ module.exports = class extends Generator {
 };
 
 // private functions
+function copyConfigFile() {
+  let {subFolder, templateName} = this.answers.template;
+
+  this.fs.copyTpl(
+    this.templatePath("index.vue"),
+    this.destinationPath(
+      `./src/templates/${subFolder}/${templateName}/index.vue`
+    ),
+    this.answers
+  );
+}
+
+function copyVueComponentFile() {
+  let {subFolder, templateName} = this.answers.template;
+
+  this.fs.copyTpl(
+    this.templatePath("config.js"),
+    this.destinationPath(
+      `./src/templates/${subFolder}/${templateName}/config.js`
+    ),
+    this.answers
+  );
+}
 function welcomeTheUser() {
   this.log(
     yosay(

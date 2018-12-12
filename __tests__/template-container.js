@@ -47,4 +47,12 @@ describe("generator-hello-1:template-container", () => {
     assert.file(["src/templates/global/TestPage/aem-component/.content.xml"]);
   });
 
+  it("creates the Vue Template File", () => {
+    assert.file(["src/templates/global/TestPage/index.vue"]);
+  });
+
+  it("creates the Vue Template File", () => {
+    assert.file(["src/templates/global/TestPage/config.js"]);
+  });
+
 });
