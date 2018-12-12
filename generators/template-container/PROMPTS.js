@@ -65,8 +65,20 @@ module.exports = function() {
       name: "component.resourceType",
       message:
         "please select the sling-resource-super-type for this component?",
-      choices: templateContainerConfig.basePagePaths,
+      choices: templateContainerConfig.basePagePaths.concat(["others"]),
       default: templateContainerConfig.basePagePaths[1]
+    },
+    {
+      when(answers) {
+        if (answers.component.resourceType === "others") {
+          return true;
+        } else {
+          return false;
+        }
+      },
+      type: "input",
+      name: "component.resourceType",
+      message: "please specify the sling:resourceType for this component?"
     }
   ];
 
