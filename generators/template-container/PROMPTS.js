@@ -56,7 +56,7 @@ module.exports = function() {
       type: "list",
       name: "template.slingType",
       message: "please select type?",
-      choices: ["sling:superResourceType", "sling:resourceType"],
+      choices: ["sling:resourceSuperType", "sling:resourceType"],
       default: "sling:resourceSuperType"
     },
     // component.resourceType
