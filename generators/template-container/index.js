@@ -56,6 +56,7 @@ function copyChildComponentsFile() {
 }
 
 function setConfig() {
+  // TODO TEST if this key is deleted from .yo-rc.json
   this.config.delete("templateContainer.PageComponents");
   this.config.set({
     PageComponents: {
