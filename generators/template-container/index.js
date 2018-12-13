@@ -22,6 +22,10 @@ module.exports = class extends Generator {
     await setAnswersForPrompts.call(this);
   }
 
+  configuring() {
+    setConfig.call(this);
+  }
+
   default() {
     setResourceType.call(this);
   }
@@ -49,6 +53,22 @@ function copyChildComponentsFile() {
       `./src/templates/${subFolder}/${templateName}/aem-component/child-page-components.html`
     )
   );
+}
+
+function setConfig() {
+  this.config.delete("templateContainer.PageComponents");
+  this.config.set({
+    PageComponents: {
+      "/templates/InsightsPage": {
+        path: "templates/InsightsPage",
+        name: "InsightsPage"
+      },
+      "/templates/HomePage": {
+        path: "templates/InsightsPage",
+        name: "InsightsPage"
+      }
+    }
+  });
 }
 
 function copyConfigFile() {

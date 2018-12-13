@@ -51,14 +51,18 @@ module.exports = function() {
       message: "What is the ranking for this template?",
       default: 100
     },
+    // TODO SETUP the template.resourceType PROMPT (it is missing)
+    // TODO RENAME the template.resourceType key to template.resource
     // template.slingType
     {
       type: "list",
       name: "template.slingType",
       message: "please select sling type for this CQ Template:",
       choices: ["sling:resourceSuperType", "sling:resourceType"],
-      default: "sling:resourceSuperType"
+      default: "sling:resourceType"
     },
+
+    // COMPONENT PROMPTS
     // component.slingType
     {
       type: "list",
@@ -67,12 +71,12 @@ module.exports = function() {
       choices: ['sling:resourceSuperType', 'sling:resourceType'],
       default: 'sling:resourceSuperType'
     },
-    // component.resourceType
+    // component.resourceType (2 prompts to get answer)
     {
       type: "list",
       name: "component.resourceType",
       message:
-        "please select the sling-resource-super-type for this template component:",
+        "please select the resource for this template component:",
       choices: templateContainerConfig.basePagePaths.concat(["others"]),
       default: templateContainerConfig.basePagePaths[1]
     },
@@ -85,7 +89,7 @@ module.exports = function() {
         }
       },
       type: "input",
-      // TODO - rename reosurceType to resource
+      // TODO - RENAME the component.reosurceType key component.resource
       name: "component.resourceType",
       message: "please specify the sling:resourceType for this component?"
     }
