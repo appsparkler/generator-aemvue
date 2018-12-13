@@ -25,6 +25,8 @@ describe("generator-hello-1:template-container", () => {
       "template.slingType": "sling:resourceType",
       "template.resourceType":
         "/apps/aem-app/src/templates/global/TestPage/aem-component",
+      "component.slingType":
+        "sling:resourceSuperType",
       "component.resourceType":
         "/apps/aem-app/src/templates/global/BasePage/aem-component"
     };
