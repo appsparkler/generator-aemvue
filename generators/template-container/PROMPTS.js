@@ -42,7 +42,7 @@ module.exports = function() {
       name: "template.allowedPaths",
       message:
         "What paths are allowed to access this template (comma-seperated for multiple items)?",
-      default: "/content(/*)"
+      default: "/content/.+"
     },
     // template.ranking
     {
