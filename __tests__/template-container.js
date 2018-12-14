@@ -5,6 +5,7 @@ const assert = require("yeoman-assert");
 const helpers = require("yeoman-test");
 
 describe("generator-hello-1:template-container", () => {
+  let ctx;
   beforeAll(() => {
     const localConfig = {
       appName: "aem-app",
@@ -19,22 +20,22 @@ describe("generator-hello-1:template-container", () => {
       "template.templateName": "TestPage",
       "template.title": "Test Page Template",
       "template.description": "A template for Test Page Template.",
-      "template.subFolder": "global",
+      "template.category": "global",
       "template.allowedPaths": "/content(/*)",
       "template.ranking": 100,
       "template.slingType": "sling:resourceType",
-      "template.resourceType":
+      "template.resourcePath":
         "/apps/aem-app/src/templates/global/TestPage/aem-component",
-      "component.slingType":
-        "sling:resourceSuperType",
-      "component.resourceType":
-        "/apps/aem-app/src/templates/global/BasePage/aem-component"
+      "component.slingType": "sling:resourceSuperType",
+      "component.resourcePath":
+        "/apps/aem-app/src/templates/global/BasePage/aem-component",
     };
-    return helpers
+    ctx = helpers
       .run(path.join(__dirname, "../generators/template-container"))
       .withLocalConfig(localConfig)
       .withPrompts(prompts)
       .withArguments(["TestPage"]);
+    return ctx;
   });
 
   it("creates the Folder JCR .content.xml file", () => {
@@ -58,7 +59,15 @@ describe("generator-hello-1:template-container", () => {
   });
 
   it("creates the Template Component File", () => {
-    assert.file(["src/templates/global/TestPage/aem-component/child-page-components.html"]);
+    assert.file([
+      "src/templates/global/TestPage/aem-component/child-page-components.html"
+    ]);
   });
-
+  it("sets the correct answers object from prompts", () => {
+    const {answers} = ctx;
+    assert.objectContent(answers, {
+      'template.resourcePath': '/apps/aem-app/src/templates/global/TestPage/aem-component',
+      'component.resourcePath': '/apps/aem-app/src/templates/global/BasePage/aem-component'
+    });
+  });
 });

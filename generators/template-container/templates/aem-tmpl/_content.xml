@@ -11,7 +11,7 @@
 >
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        <%= template.slingType %>="<%= template.resourceType %>"
+        <%= template.slingType %>="<%= template.resourcePath %>"
     >
     </jcr:content>
 </jcr:root>

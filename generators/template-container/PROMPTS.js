@@ -1,7 +1,8 @@
 /*eslint-disable*/
 module.exports = function() {
   const {templateName} = this.options;
-  const templateContainerConfig = this.config.get("templateContainer");
+  const YoRC = this.config.getAll();
+  const templateContainerConfig = YoRC.templateContainer;
   //
   let answers = {};
   const PROMPTS = [
@@ -28,10 +29,11 @@ module.exports = function() {
         return `A template for ${answers.template.title}.`;
       }
     },
-    // template.subFolder
+    // template.category (category)
+    // TODO rename template.category to template.category
     {
       type: "list",
-      name: "template.subFolder",
+      name: "template.category",
       message: "Please provide template sub-folder?",
       choices: ["global", "content"],
       default: "global"
@@ -51,32 +53,47 @@ module.exports = function() {
       message: "What is the ranking for this template?",
       default: 100
     },
-    // TODO SETUP the template.resourceType PROMPT (it is missing)
-    // TODO RENAME the template.resourceType key to template.resource
-    // template.slingType
     {
       type: "list",
       name: "template.slingType",
-      message: "please select sling type for this CQ Template:",
+      message: "Please select sling-type for this CQ template:",
       choices: ["sling:resourceSuperType", "sling:resourceType"],
       default: "sling:resourceType"
     },
-
+    // template.resourcePath
+    // template.slingType
+    {
+      type: "input",
+      name: "template.resourcePath",
+      message:
+        "Please specify the resource path of the component for this template : ",
+      default(answers) {
+        let resourcePath = "";
+        try {
+          const {appName} = YoRC;
+          const {category, templateName} = answers.template;
+          resourcePath =
+            `/apps/${appName}/src/templates/${category}/${templateName}/aem-component`;
+        } catch (e) {
+          console.error(e);
+        }
+        return resourcePath;
+      }
+    },
     // COMPONENT PROMPTS
     // component.slingType
     {
       type: "list",
       name: "component.slingType",
-      message: "please select the sling-type for this template:",
-      choices: ['sling:resourceSuperType', 'sling:resourceType'],
-      default: 'sling:resourceSuperType'
+      message: "please select the sling-type for this template-component:",
+      choices: ["sling:resourceSuperType", "sling:resourceType"],
+      default: "sling:resourceSuperType"
     },
     // component.resourceType (2 prompts to get answer)
     {
       type: "list",
-      name: "component.resourceType",
-      message:
-        "please select the resource for this template component:",
+      name: "component.resourcePath",
+      message: "please select the resourcePath for this component:",
       choices: templateContainerConfig.basePagePaths.concat(["others"]),
       default: templateContainerConfig.basePagePaths[1]
     },
@@ -89,9 +106,8 @@ module.exports = function() {
         }
       },
       type: "input",
-      // TODO - RENAME the component.reosurceType key component.resource
-      name: "component.resourceType",
-      message: "please specify the sling:resourceType for this component?"
+      name: "component.resourcePath",
+      message: "please specify the resourcePath for this component:"
     }
   ];
 

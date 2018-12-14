@@ -31,8 +31,8 @@ module.exports = class extends Generator {
   }
 
   writing() {
-    copyTemplateJCR.call(this);
     copyFolderJCR.call(this);
+    copyTemplateJCR.call(this);
     copyComponentJCR.call(this);
     copyConfigFile.call(this);
     copyVueComponentFile.call(this);
@@ -46,11 +46,11 @@ module.exports = class extends Generator {
 
 // private functions
 function copyChildComponentsFile() {
-  const {subFolder, templateName} = this.answers.template;
+  const {category, templateName} = this.answers.template;
   this.fs.copy(
     this.templatePath("aem-component/child-page-components.html"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/aem-component/child-page-components.html`
+      `./src/templates/${category}/${templateName}/aem-component/child-page-components.html`
     )
   );
 }
@@ -73,24 +73,24 @@ function setConfig() {
 }
 
 function copyConfigFile() {
-  let {subFolder, templateName} = this.answers.template;
+  let {category, templateName} = this.answers.template;
 
   this.fs.copyTpl(
     this.templatePath("index.vue"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/index.vue`
+      `./src/templates/${category}/${templateName}/index.vue`
     ),
     this.answers
   );
 }
 
 function copyVueComponentFile() {
-  let {subFolder, templateName} = this.answers.template;
+  let {category, templateName} = this.answers.template;
 
   this.fs.copyTpl(
     this.templatePath("config.js"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/config.js`
+      `./src/templates/${category}/${templateName}/config.js`
     ),
     this.answers
   );
@@ -122,43 +122,43 @@ async function setAnswersForPrompts() {
 }
 
 function copyTemplateJCR() {
-  let {subFolder, templateName} = this.answers.template;
+  let {category, templateName} = this.answers.template;
 
   this.fs.copyTpl(
     this.templatePath("aem-tmpl/_content.xml"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/aem-tmpl/.content.xml`
+      `./src/templates/${category}/${templateName}/aem-tmpl/.content.xml`
     ),
     this.answers
   );
 }
 
 function copyComponentJCR() {
-  let {subFolder, templateName} = this.answers.template;
+  let {category, templateName} = this.answers.template;
 
   this.fs.copyTpl(
     this.templatePath("aem-component/_content.xml"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/aem-component/.content.xml`
+      `./src/templates/${category}/${templateName}/aem-component/.content.xml`
     ),
     this.answers
   );
 }
 
 function copyFolderJCR() {
-  const {subFolder, templateName} = this.answers.template;
+  const {category, templateName} = this.answers.template;
   this.fs.copy(
     this.templatePath("_content.xml"),
     this.destinationPath(
-      `./src/templates/${subFolder}/${templateName}/.content.xml`
+      `./src/templates/${category}/${templateName}/.content.xml`
     )
   );
 }
 
 function setResourceType() {
   let appName = this.config.get("appName");
-  let {subFolder, templateName} = this.answers.template;
-  this.answers.template.resourceType = `/apps/${appName}/src/templates/${subFolder}/${templateName}/aem-component`;
+  let {category, templateName} = this.answers.template;
+  this.answers.template.resourceType = `/apps/${appName}/src/templates/${category}/${templateName}/aem-component`;
 }
 
 /*
