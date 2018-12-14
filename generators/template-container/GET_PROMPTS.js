@@ -30,7 +30,6 @@ module.exports = function() {
       }
     },
     // template.category (category)
-    // TODO rename template.category to template.category
     {
       type: "list",
       name: "template.category",

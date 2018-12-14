@@ -55,19 +55,26 @@ function copyChildComponentsFile() {
 
 function setConfig() {
   // TODO TEST if this key is deleted from .yo-rc.json
-  this.config.delete("templateContainer.PageComponents");
-  this.config.set({
-    PageComponents: {
-      "/templates/InsightsPage": {
-        path: "templates/InsightsPage",
-        name: "InsightsPage"
-      },
-      "/templates/HomePage": {
-        path: "templates/InsightsPage",
-        name: "InsightsPage"
-      }
-    }
-  });
+  const YoRC = this.config.getAll();
+  this.config.delete("templateContainer");
+  const TemplateComponents = YoRC.templateContainer.TemplateComponents;
+  TemplateComponents["/new-templates/Homepage"] = {
+    path: "templates/InsightsPage",
+    name: "InsightsPage"
+  };
+  YoRC.templateContainer.TemplateComponents = TemplateComponents;
+  //
+  this.config.set(YoRC);
+  // this.config.set({
+//   TemplateComponents: {
+//     "/new-templates/HomePage": {
+//       path: "templates/InsightsPage",
+//       name: "InsightsPage"
+//     },
+//     ...YoRC.TempalteComponents
+//   }
+// });
+
 }
 
 function copyConfigFile() {
