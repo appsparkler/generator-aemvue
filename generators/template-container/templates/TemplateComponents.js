@@ -1,11 +1,11 @@
 
 // TODO - iterate over the TemplateCompnents Object from .yo-rc.json
-<% for
-
-import InsightsPage from "templates/InsightsPage";
-import HomePage from "templates/HomePage";
+<% for (var pathKey in TemplateComponents) {%>
+import <%= TemplateComponents[pathKey] %> from '<%= pathKey %>';
+<% } %>
 
 export default {
-  InsightsPage,
-  HomePage
-};
+  <% for (var pathKey in TemplateComponents) {%>
+    <%= TemplateComponents[pathKey] %><%- template.templateName != TemplateComponents[pathKey] ? "," : "" %>
+  <% } %>
+}

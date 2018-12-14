@@ -35,6 +35,7 @@ module.exports = class extends Generator {
     copyConfigFile.call(this);
     copyVueComponentFile.call(this);
     copyChildComponentsFile.call(this);
+    reWriteTemplateComponentsFile.call(this);
   }
 
   end() {
@@ -43,6 +44,16 @@ module.exports = class extends Generator {
 };
 
 // private functions
+function reWriteTemplateComponentsFile() {
+  var TemplateComponents = this.config.getAll().templateContainer.TemplateComponents;
+  var template = this.answers.template;
+  this.fs.copyTpl(
+    this.templatePath("TemplateComponents.js"),
+    this.destinationPath(`src/components/Functional/TemplateComponentDecider/TemplateComponents.js`),
+    {TemplateComponents, template }
+  );
+}
+
 function copyChildComponentsFile() {
   const {category, templateName} = this.answers.template;
   this.fs.copy(
@@ -54,27 +65,16 @@ function copyChildComponentsFile() {
 }
 
 function setConfig() {
-  // TODO TEST if this key is deleted from .yo-rc.json
   const YoRC = this.config.getAll();
-  this.config.delete("templateContainer");
+  const templateName = this.answers.template.templateName;
+  const category = this.answers.template.category;
+  const templatePath = `templates/${category}/${templateName}`;
   const TemplateComponents = YoRC.templateContainer.TemplateComponents;
-  TemplateComponents["/new-templates/Homepage"] = {
-    path: "templates/InsightsPage",
-    name: "InsightsPage"
-  };
+  TemplateComponents[templatePath] = templateName;
   YoRC.templateContainer.TemplateComponents = TemplateComponents;
   //
+  console.log(YoRC)
   this.config.set(YoRC);
-  // this.config.set({
-//   TemplateComponents: {
-//     "/new-templates/HomePage": {
-//       path: "templates/InsightsPage",
-//       name: "InsightsPage"
-//     },
-//     ...YoRC.TempalteComponents
-//   }
-// });
-
 }
 
 function copyConfigFile() {

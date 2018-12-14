@@ -13,7 +13,8 @@ describe("generator-hello-1:template-container", () => {
         basePagePaths: [
           "core/wcm/components/page/v2/page",
           "/apps/aem-app/src/templates/global/BasePage/aem-component"
-        ]
+        ],
+        TemplateComponents: {}
       }
     };
     const prompts = {
@@ -63,6 +64,13 @@ describe("generator-hello-1:template-container", () => {
       "src/templates/global/TestPage/aem-component/child-page-components.html"
     ]);
   });
+
+  it("creates the Template Component JS File", () => {
+    assert.file([
+      "src/components/Functional/TemplateComponentDecider/TemplateComponents.js"
+    ]);
+  });
+
   it("sets the correct answers object from prompts", () => {
     const {answers} = ctx;
     assert.objectContent(answers, {
