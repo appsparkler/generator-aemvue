@@ -27,7 +27,7 @@ module.exports = class extends Generator {
   }
 
   default() {
-    setResourceType.call(this);
+    // setResourceType.call(this);
   }
 
   writing() {
@@ -155,11 +155,6 @@ function copyFolderJCR() {
   );
 }
 
-function setResourceType() {
-  let appName = this.config.get("appName");
-  let {category, templateName} = this.answers.template;
-  this.answers.template.resourceType = `/apps/${appName}/src/templates/${category}/${templateName}/aem-component`;
-}
 
 /*
 	Initializing();
