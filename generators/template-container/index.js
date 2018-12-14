@@ -26,9 +26,7 @@ module.exports = class extends Generator {
     setConfig.call(this);
   }
 
-  default() {
-    // setResourceType.call(this);
-  }
+  default() {}
 
   writing() {
     copyFolderJCR.call(this);
@@ -154,7 +152,6 @@ function copyFolderJCR() {
     )
   );
 }
-
 
 /*
 	Initializing();
