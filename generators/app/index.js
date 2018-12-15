@@ -1,3 +1,6 @@
+// TODO CREATE a generator for delting templates
+// TODO RESEARCH issue - unable to create page with template generated
+// TODO REMOVE template references from yo-rc-json
 "use strict";
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");

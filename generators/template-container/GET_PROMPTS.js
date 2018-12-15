@@ -65,7 +65,7 @@ module.exports = function() {
       type: "input",
       name: "template.resourcePath",
       message:
-        "Please specify the resource path of the component for this template : ",
+        "template-component resource path : ",
       default(answers) {
         let resourcePath = "";
         try {
@@ -96,9 +96,10 @@ module.exports = function() {
       choices: templateContainerConfig.basePagePaths.concat(["others"]),
       default: templateContainerConfig.basePagePaths[1]
     },
+    // TODO
     {
       when(answers) {
-        if (answers.component.resourceType === "others") {
+        if (answers.component.resourcePath === "others") {
           return true;
         } else {
           return false;
