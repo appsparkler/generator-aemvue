@@ -16,16 +16,17 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
-    await setAnswersForPrompts.call(this);
+    // await setAnswersForPrompts.call(this);
   }
 
   configuring() {
-    setConfig.call(this);
+    //  setConfig.call(this);
   }
 
   default() {}
 
   writing() {
+    /*
     copyFolderJCR.call(this);
     copyTemplateJCR.call(this);
     copyComponentJCR.call(this);
@@ -33,6 +34,7 @@ module.exports = class extends Generator {
     copyVueComponentFile.call(this);
     copyChildComponentsFile.call(this);
     reWriteTemplateComponentsFile.call(this);
+    */
   }
 
   end() {
@@ -101,8 +103,8 @@ function copyVueComponentFile() {
 function welcomeTheUser() {
   this.log(
     yosay(
-      `Welcome to the AEM VUE (AV) ${chalk.bgGreen.black(
-        "::CONTAINER TEMPLATE::"
+      `Welcome to the AV ${chalk.bgRed.white(
+        "::TEMPLATE DELETE::"
       )} generator!!!`
     )
   );
