@@ -32,7 +32,7 @@ describe("generator-hello-1:template-container", () => {
         "/apps/aem-app/src/templates/global/BasePage/aem-component",
     };
     ctx = helpers
-      .run(path.join(__dirname, "../generators/template-container"))
+      .run(path.join(__dirname, "../generators/template-create"))
       .withLocalConfig(localConfig)
       .withPrompts(prompts)
       .withArguments(["TestPage"]);
