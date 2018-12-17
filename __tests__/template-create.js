@@ -5,7 +5,6 @@ const assert = require("yeoman-assert");
 const helpers = require("yeoman-test");
 
 describe("generator-hello-1:template-create", () => {
-  let ctx;
   beforeAll(() => {
     const localConfig = {
       appName: "aem-app",
@@ -31,12 +30,11 @@ describe("generator-hello-1:template-create", () => {
       "component.resourcePath":
         "/apps/aem-app/src/templates/global/BasePage/aem-component",
     };
-    ctx = helpers
+    return helpers
       .run(path.join(__dirname, "../generators/template-create"))
       .withLocalConfig(localConfig)
       .withPrompts(prompts)
       .withArguments(["TestPage"]);
-    return ctx;
   });
 
   it("creates the Folder JCR .content.xml file", () => {
@@ -71,11 +69,4 @@ describe("generator-hello-1:template-create", () => {
     ]);
   });
 
-  it("sets the correct answers object from prompts", () => {
-    const {answers} = ctx;
-    assert.objectContent(answers, {
-      'template.resourcePath': '/apps/aem-app/src/templates/global/TestPage/aem-component',
-      'component.resourcePath': '/apps/aem-app/src/templates/global/BasePage/aem-component'
-    });
-  });
 });

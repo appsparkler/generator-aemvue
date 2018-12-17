@@ -4,7 +4,6 @@ module.exports = function() {
   const YoRC = this.config.getAll();
   const templateContainerConfig = YoRC.templateContainer;
   //
-  let answers = {};
   const PROMPTS = [
     // template.templateName
     {

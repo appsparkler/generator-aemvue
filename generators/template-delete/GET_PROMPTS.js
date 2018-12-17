@@ -1,11 +1,9 @@
 /*eslint-disable*/
 module.exports = function() {
-  const {templateName} = this.options;
   const YoRC = this.config.getAll();
   const TemplateComponents = YoRC.templateContainer.TemplateComponents;
-  const templatePaths = TemplateComponents.keys();
+  const templatePaths = Object.keys(TemplateComponents);
   //
-  let answers = {};
   const PROMPTS = [
     // tmeplate to delete
     {

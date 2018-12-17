@@ -72,8 +72,6 @@ function setConfig() {
   const TemplateComponents = YoRC.templateContainer.TemplateComponents;
   TemplateComponents[templatePath] = templateName;
   YoRC.templateContainer.TemplateComponents = TemplateComponents;
-  //
-  console.log(YoRC)
   this.config.set(YoRC);
 }
 

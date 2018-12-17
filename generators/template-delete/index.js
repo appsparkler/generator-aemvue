@@ -6,7 +6,6 @@ const yosay = require("yosay");
 const GET_PROMPTS = require("./GET_PROMPTS");
 
 module.exports = class extends Generator {
-
   constructor(args, opts) {
     super(args, opts);
   }
@@ -26,17 +25,7 @@ module.exports = class extends Generator {
   default() {}
 
   writing() {
-    const templatePath = 'templates/global/TestPage'
-    this.fs.delete(`src/${templatePath}`)
-    /*
-    copyFolderJCR.call(this);
-    copyTemplateJCR.call(this);
-    copyComponentJCR.call(this);
-    copyConfigFile.call(this);
-    copyVueComponentFile.call(this);
-    copyChildComponentsFile.call(this);
-    reWriteTemplateComponentsFile.call(this);
-    */
+    delteTemplateFolder.apply(this);
   }
 
   end() {
@@ -45,13 +34,20 @@ module.exports = class extends Generator {
 };
 
 // private functions
+function delteTemplateFolder() {
+  const templatePath = this.answers.templatePath;
+  this.fs.delete(`src/${templatePath}`);
+}
 function reWriteTemplateComponentsFile() {
-  var TemplateComponents = this.config.getAll().templateContainer.TemplateComponents;
+  var TemplateComponents = this.config.getAll().templateContainer
+    .TemplateComponents;
   var template = this.answers.template;
   this.fs.copyTpl(
     this.templatePath("TemplateComponents.js"),
-    this.destinationPath(`src/components/Functional/TemplateComponentDecider/TemplateComponents.js`),
-    {TemplateComponents, template }
+    this.destinationPath(
+      `src/components/Functional/TemplateComponentDecider/TemplateComponents.js`
+    ),
+    {TemplateComponents, template}
   );
 }
 
@@ -74,7 +70,7 @@ function setConfig() {
   TemplateComponents[templatePath] = templateName;
   YoRC.templateContainer.TemplateComponents = TemplateComponents;
   //
-  console.log(YoRC)
+  console.log(YoRC);
   this.config.set(YoRC);
 }
 
