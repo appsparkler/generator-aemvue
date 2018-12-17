@@ -20,7 +20,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    //  setConfig.call(this);
+     setConfig.call(this);
     // TODO RESET/REWRITE  TemplateComponents.js after deleting template
   }
 
@@ -42,19 +42,6 @@ function delteTemplateFolder() {
   fs.removeSync(this.destinationPath(`src/${templatePath}`));
 }
 
-function reWriteTemplateComponentsFile() {
-  var TemplateComponents = this.config.getAll().templateContainer
-    .TemplateComponents;
-  var template = this.answers.template;
-  this.fs.copyTpl(
-    this.templatePath("TemplateComponents.js"),
-    this.destinationPath(
-      `src/components/Functional/TemplateComponentDecider/TemplateComponents.js`
-    ),
-    {TemplateComponents, template}
-  );
-}
-
 function copyChildComponentsFile() {
   const {category, templateName} = this.answers.template;
   this.fs.copy(
@@ -67,15 +54,26 @@ function copyChildComponentsFile() {
 
 function setConfig() {
   const YoRC = this.config.getAll();
-  const templateName = this.answers.template.templateName;
-  const category = this.answers.template.category;
-  const templatePath = `templates/${category}/${templateName}`;
-  const TemplateComponents = YoRC.templateContainer.TemplateComponents;
-  TemplateComponents[templatePath] = templateName;
+  const {templatePath} = this.answers;
+  const {TemplateComponents} = YoRC.templateContainer;
+  delete TemplateComponents[templatePath];
   YoRC.templateContainer.TemplateComponents = TemplateComponents;
   //
-  console.log(YoRC);
+  console.log(YoRC.templateContainer.TemplateComponents);
   this.config.set(YoRC);
+}
+
+function reWriteTemplateComponentsFile() {
+  var TemplateComponents = this.config.getAll().templateContainer
+    .TemplateComponents;
+  var template = this.answers.template;
+  this.fs.copyTpl(
+    this.templatePath("TemplateComponents.js"),
+    this.destinationPath(
+      `src/components/Functional/TemplateComponentDecider/TemplateComponents.js`
+    ),
+    {TemplateComponents, template}
+  );
 }
 
 function copyConfigFile() {

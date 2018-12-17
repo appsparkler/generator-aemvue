@@ -50,7 +50,6 @@ describe("generator-av:template-delete", () => {
   it("checks if the reference is removed from config", () => {
     const {localConfig, answers} = ctx;
     const {TemplateComponents} = localConfig.templateContainer;
-    console.log({[answers.templatePath]: "TestPage"});
     assert.noObjectContent(TemplateComponents, {
       [answers.templatePath]: "TestPage"
     });
