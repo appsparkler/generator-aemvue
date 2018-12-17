@@ -16,7 +16,7 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
-    // await setAnswersForPrompts.call(this);
+    await setAnswersForPrompts.call(this);
   }
 
   configuring() {
@@ -26,6 +26,8 @@ module.exports = class extends Generator {
   default() {}
 
   writing() {
+    const templatePath = 'templates/global/TestPage'
+    this.fs.delete(`src/${templatePath}`)
     /*
     copyFolderJCR.call(this);
     copyTemplateJCR.call(this);
