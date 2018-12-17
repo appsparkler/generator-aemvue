@@ -3,6 +3,7 @@
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
+const fs = require("fs-extra");
 const GET_PROMPTS = require("./GET_PROMPTS");
 
 module.exports = class extends Generator {
@@ -20,12 +21,14 @@ module.exports = class extends Generator {
 
   configuring() {
     //  setConfig.call(this);
+    // TODO RESET/REWRITE  TemplateComponents.js after deleting template
   }
 
   default() {}
 
   writing() {
     delteTemplateFolder.apply(this);
+    // TODO UPDATE template file after deleting TemplateComponents.js
   }
 
   end() {
@@ -36,8 +39,9 @@ module.exports = class extends Generator {
 // private functions
 function delteTemplateFolder() {
   const templatePath = this.answers.templatePath;
-  this.fs.delete(`src/${templatePath}`);
+  fs.removeSync(this.destinationPath(`src/${templatePath}`));
 }
+
 function reWriteTemplateComponentsFile() {
   var TemplateComponents = this.config.getAll().templateContainer
     .TemplateComponents;
@@ -109,11 +113,12 @@ function welcomeTheUser() {
 }
 
 function userFarewell() {
+  const {templatePath} = this.answers;
   this.log(
     yosay(
-      `Thank you for working with AEM VUE (AV) ${chalk.bgGreen.black(
-        "::TEMPLATE::"
-      )} generator!!!  Have a good day!!!`
+      `Template at path ${chalk.bgRed.white(
+        templatePath
+      )} is deleted...`
     )
   );
 }
