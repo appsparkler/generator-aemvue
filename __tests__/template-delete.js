@@ -6,6 +6,8 @@ const helpers = require("yeoman-test");
 const fs = require("fs-extra");
 
 describe("generator-av:template-delete", () => {
+  let ctx;
+
   beforeAll(() => {
     const localConfig = {
       appName: "aemarch13",
@@ -16,11 +18,12 @@ describe("generator-av:template-delete", () => {
         ],
         TemplateComponents: {
           "templates/InsightsPage": "InsightsPage",
-          "templates/HomePage": "HomePage"
+          "templates/HomePage": "HomePage",
+          "templates/global/TestPage": "TestPage"
         }
       }
     };
-    return helpers
+    ctx = helpers
       .run(path.join(__dirname, "../generators/template-delete"))
       .withLocalConfig(localConfig)
       .inTmpDir(function(dir) {
@@ -29,7 +32,8 @@ describe("generator-av:template-delete", () => {
           `${dir}/src/templates/global/TestPage/`
         );
       })
-      .withPrompts({templatePath: "/templates/global/TestPage"});
+      .withPrompts({templatePath: "templates/global/TestPage"});
+    return ctx;
   });
 
   it("removes the template files", () => {
@@ -41,5 +45,14 @@ describe("generator-av:template-delete", () => {
       "src/templates/global/TestPage/config.js",
       "src/templates/global/TestPage/index.vue"
     ]);
+  });
+
+  it("checks if the reference is removed from config", () => {
+    const {localConfig, answers} = ctx;
+    const {TemplateComponents} = localConfig.templateContainer;
+    console.log({[answers.templatePath]: "TestPage"});
+    assert.noObjectContent(TemplateComponents, {
+      [answers.templatePath]: "TestPage"
+    });
   });
 });
