@@ -53,4 +53,8 @@ describe("generator-av:template-delete", () => {
       [answers.templatePath]: "TestPage"
     });
   });
+
+  it("creates the TemplateComponents.js file with new config", () => {
+    assert.file(["src/components/Functional/TemplateComponentDecider/TemplateComponent.js"])
+  });
 });
