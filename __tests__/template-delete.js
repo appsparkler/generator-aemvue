@@ -55,6 +55,6 @@ describe("generator-av:template-delete", () => {
   });
 
   it("creates the TemplateComponents.js file with new config", () => {
-    assert.file(["src/components/Functional/TemplateComponentDecider/TemplateComponent.js"])
+    assert.file(["src/components/Functional/TemplateComponentDecider/TemplateComponents.js"])
   });
 });

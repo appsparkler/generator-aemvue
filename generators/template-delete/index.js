@@ -20,7 +20,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-     setConfig.call(this);
+    setConfig.call(this);
     // TODO RESET/REWRITE  TemplateComponents.js after deleting template
   }
 
@@ -28,7 +28,8 @@ module.exports = class extends Generator {
 
   writing() {
     delteTemplateFolder.apply(this);
-    // TODO UPDATE TemplateComponents.js file after deleting template folder.  
+    reWriteTemplateComponentsFile.apply(this);
+    // TODO UPDATE TemplateComponents.js file after deleting template folder.
   }
 
   end() {
@@ -64,15 +65,15 @@ function setConfig() {
 }
 
 function reWriteTemplateComponentsFile() {
-  var TemplateComponents = this.config.getAll().templateContainer
+  let TemplateComponents = this.config.getAll().templateContainer
     .TemplateComponents;
-  var template = this.answers.template;
+  let {answers} = this
   this.fs.copyTpl(
     this.templatePath("TemplateComponents.js"),
     this.destinationPath(
       `src/components/Functional/TemplateComponentDecider/TemplateComponents.js`
     ),
-    {TemplateComponents, template}
+    {TemplateComponents, answers}
   );
 }
 
@@ -113,11 +114,7 @@ function welcomeTheUser() {
 function userFarewell() {
   const {templatePath} = this.answers;
   this.log(
-    yosay(
-      `Template at path ${chalk.bgRed.white(
-        templatePath
-      )} is deleted...`
-    )
+    yosay(`Template at path ${chalk.bgRed.white(templatePath)} is deleted...`)
   );
 }
 

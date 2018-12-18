@@ -6,6 +6,6 @@ import <%= TemplateComponents[pathKey] %> from '<%= pathKey %>';
 
 export default {
   <% for (var pathKey in TemplateComponents) {%>
-    <%= TemplateComponents[pathKey] %><%- template.templateName != TemplateComponents[pathKey] ? "," : "" %>
+    <%= TemplateComponents[pathKey] %><%- answers.templateName != TemplateComponents[pathKey] ? "," : "" %>
   <% } %>
 }
