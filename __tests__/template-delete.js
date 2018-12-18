@@ -18,8 +18,7 @@ describe("generator-av:template-delete", () => {
         ],
         TemplateComponents: {
           "templates/InsightsPage": "InsightsPage",
-          "templates/HomePage": "HomePage",
-          "templates/global/TestPage": "TestPage"
+          "templates/HomePage": "HomePage"
         }
       }
     };

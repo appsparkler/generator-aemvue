@@ -28,7 +28,7 @@ module.exports = class extends Generator {
 
   writing() {
     delteTemplateFolder.apply(this);
-    // TODO UPDATE template file after deleting TemplateComponents.js
+    // TODO UPDATE TemplateComponents.js file after deleting template folder.  
   }
 
   end() {
