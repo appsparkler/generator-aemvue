@@ -95,7 +95,6 @@ module.exports = function() {
       choices: templateContainerConfig.basePagePaths.concat(["others"]),
       default: templateContainerConfig.basePagePaths[1]
     },
-    // TODO
     {
       when(answers) {
         if (answers.component.resourcePath === "others") {

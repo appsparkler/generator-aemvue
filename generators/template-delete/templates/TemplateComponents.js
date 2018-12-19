@@ -1,5 +1,4 @@
 // This is a generated file
-// TODO run eslint on the generated file
 <% for (var pathKey in TemplateComponents) {%>
 import <%= TemplateComponents[pathKey] %> from '<%= pathKey %>';
 <% } %>

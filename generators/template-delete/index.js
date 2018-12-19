@@ -1,4 +1,6 @@
 /* eslint-disable*/
+
+// TODO run eslint on the generated file
 "use strict";
 const Generator = require("yeoman-generator");
 const chalk = require("chalk");
@@ -21,7 +23,6 @@ module.exports = class extends Generator {
 
   configuring() {
     setConfig.call(this);
-    // TODO RESET/REWRITE  TemplateComponents.js after deleting template
   }
 
   default() {}
@@ -29,7 +30,6 @@ module.exports = class extends Generator {
   writing() {
     delteTemplateFolder.apply(this);
     reWriteTemplateComponentsFile.apply(this);
-    // TODO UPDATE TemplateComponents.js file after deleting template folder.
   }
 
   end() {
