@@ -18,7 +18,13 @@ module.exports = function() {
         name: "app.pathToAEMProject",
         message: "Please enter the path to the AEM Project folder: ",
         validate: validate_pathToAEMProject.bind(this)
-      }
+    },
+    {
+        type: "confirm",
+        name: "ui.installNodeModules",
+        message: "Would you like to install the node modules afer scaffolding?",
+        default: true
+    }
     // template.templateName
   /*  {
       type: "input",

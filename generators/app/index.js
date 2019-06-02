@@ -15,16 +15,16 @@ module.exports = class extends Generator {
   }
 
   initializing() {
-    welcomeTheUser.call(this);
+    welcome_theUser.call(this);
   }
 
   async prompting() {
-    await setAnswersForPrompts.call(this);
+    await set_AnswersForPrompts.call(this);
   }
 
   configuring() {
     this.destinationRoot(`${this.answers.app.name}-webapp`);
-    setConfig.call(this);
+    set_config.call(this);
   }
 
   default() {}
@@ -34,12 +34,12 @@ module.exports = class extends Generator {
   }
 
   end() {
-    userFarewell.call(this);
+    conduct_userFarewell.call(this);
   }
 };
 
 // private functions
-function setConfig() {
+function set_config() {
   this.config.set('appName', this.answers.app.name);
   this.config.set(
     'pathToAEMProjectFolder',
@@ -91,6 +91,11 @@ function scaffold_app() {
     this.templatePath("appName"),
     this.destinationPath()
   );
+  // Copy All DOT (.) files
+  this.fs.copy(
+    this.templatePath('appName/**/.*'),
+    this.destinationRoot()
+  );
   templatePaths.forEach(key => {
     this.fs.copyTpl(
       this.templatePath(path.join('appName', key)),
@@ -112,7 +117,7 @@ function scaffold_app() {
   */
 }
 
-function welcomeTheUser() {
+function welcome_theUser() {
   this.log(
     yosay(
       ` Welcome to the
@@ -124,52 +129,7 @@ function welcomeTheUser() {
   );
 }
 
-function reWriteTemplateComponentsFile() {
-  var TemplateComponents = this.config.getAll().templateContainer.TemplateComponents;
-  var template = this.answers.template;
-  this.fs.copyTpl(
-    this.templatePath("TemplateComponents.js"),
-    this.destinationPath(`src/components/Functional/TemplateComponentDecider/TemplateComponents.js`),
-    {TemplateComponents, template }
-  );
-}
-
-function copyChildComponentsFile() {
-  const {category, templateName} = this.answers.template;
-  this.fs.copy(
-    this.templatePath("aem-component/child-page-components.html"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/aem-component/child-page-components.html`
-    )
-  );
-}
-
-function copyConfigFile() {
-  let {category, templateName} = this.answers.template;
-
-  this.fs.copyTpl(
-    this.templatePath("index.vue"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/index.vue`
-    ),
-    this.answers
-  );
-}
-
-function copyVueComponentFile() {
-  let {category, templateName} = this.answers.template;
-
-  this.fs.copyTpl(
-    this.templatePath("config.js"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/config.js`
-    ),
-    this.answers
-  );
-}
-
-
-function userFarewell() {
+function conduct_userFarewell() {
   this.log(
     yosay(
       `Thank you for scaffolding your app with
@@ -180,11 +140,12 @@ function userFarewell() {
       `
     )
   );
-  this.log('Please wait while we install your node_modules...');
-  this.npmInstall();
+  this.spawnCommandSync('git', ['init']);
+  if(this.answers.ui.installNodeModules)  this.log('Please wait while we install your node_modules...');
+  if(this.answers.ui.installNodeModules) this.npmInstall();
 }
 
-async function setAnswersForPrompts() {
+async function set_AnswersForPrompts() {
   const PROMPTS = GET_PROMPTS.call(this);
   this.answers = await this.prompt(PROMPTS);
 }
