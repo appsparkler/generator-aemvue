@@ -78,7 +78,8 @@ function scaffold_app() {
     customFooterLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html',
     basePageTemplate: '/src/templates/global/BasePage/BasePage-tmpl/.content.xml',
     basePageClientLibs: '/src/templates/global/BasePage/publishLibs/.content.xml',
-    basePageIndexPage: '/src/templates/global/BasePage/index.pug'
+    basePageIndexPage: '/src/templates/global/BasePage/index.pug',
+    '.env': '/.env'
   };
 
   // D:\Projects\generator-aemvue\generators\app\templates\appName\src\templates\global\BasePage\publishLibs\.content.xml
