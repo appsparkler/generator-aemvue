@@ -8,7 +8,7 @@ const GET_PROMPTS = require("./GET_PROMPTS");
 module.exports = class extends Generator {
   constructor(args, opts) {
     super(args, opts);
-    this.argument("templateName", {
+    this.argument("appName", {
       type: String,
       required: true
     });
@@ -19,23 +19,24 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
-    await setAnswersForPrompts.call(this);
+    // await setAnswersForPrompts.call(this);
   }
 
   configuring() {
-    setConfig.call(this);
+    // setConfig.call(this);
   }
 
   default() {}
 
   writing() {
-    copyFolderJCR.call(this);
-    copyTemplateJCR.call(this);
-    copyComponentJCR.call(this);
-    copyConfigFile.call(this);
-    copyVueComponentFile.call(this);
-    copyChildComponentsFile.call(this);
-    reWriteTemplateComponentsFile.call(this);
+    create_appContainer.call(this);
+    // copyFolderJCR.call(this);
+    // copyTemplateJCR.call(this);
+    // copyComponentJCR.call(this);
+    // copyConfigFile.call(this);
+    // copyVueComponentFile.call(this);
+    // copyChildComponentsFile.call(this);
+    // reWriteTemplateComponentsFile.call(this);
   }
 
   end() {
@@ -44,6 +45,12 @@ module.exports = class extends Generator {
 };
 
 // private functions
+function create_appContainer() {
+  this.fs.copy(
+    this.templatePath("appName"),
+    this.destinationPath(this.options.appName)
+  );
+}
 function reWriteTemplateComponentsFile() {
   var TemplateComponents = this.config.getAll().templateContainer.TemplateComponents;
   var template = this.answers.template;

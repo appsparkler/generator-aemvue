@@ -1,6 +1,6 @@
 /*eslint-disable*/
 module.exports = function() {
-  const {templateName} = this.options;
+  const { appName } = this.options;
   const YoRC = this.config.getAll();
   const templateContainerConfig = YoRC.templateContainer;
   //
@@ -9,7 +9,7 @@ module.exports = function() {
     {
       type: "input",
       name: "template.templateName",
-      message: "What is the name for this template (the template-folder-name)?",
+      message: "What is the name of your front-end webapp? (This may or may not be the same as the AEM project name)",
       default: `${templateName}`
     },
     // template.title
