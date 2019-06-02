@@ -3,7 +3,7 @@
      data-sly-call="${clientlib.css @ categories='aemarch13.BasePage'}" />
 
 <!-- CALL ALL CLIENTLBS FOR COMPONENTS HERE -->
-<sly data-sly-use.templates="/apps/aemarch13/dist/HTLTemplates/recursiveClientLibsTemplate.html"
+<sly data-sly-use.templates="/apps/<%= options.appName %>/dist/HTLTemplates/recursiveClientLibsTemplate.html"
      data-sly-test="${resource.hasChildren}"
      data-sly-list="${resource.listChildren}">
   <sly data-sly-call="${templates.recursiveClientLibsTemplate @ item=item, type='css'}"></sly>

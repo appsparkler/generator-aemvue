@@ -73,7 +73,9 @@ function create_appContainer() {
   const filePaths = {
     chunkVendorsClientLib: '/src/chunk-vendors/.content.xml',
     chunkCommonClientLib: '/src/chunk-common/.content.xml',
-    editableAddedFile: '/src/clientlibs/authoring/js/listeners/edtiable-added.js'
+    editableAddedFile: '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
+    customHeaderLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customheaderlibs.html',
+    customFooterLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html'
   };
   this.fs.copy(
     this.templatePath("appName"),
