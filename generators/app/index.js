@@ -27,7 +27,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    this.destinationRoot(this.options.appName);
+    this.destinationRoot(`${this.options.appName}-webapp`);
     setConfig.call(this);
   }
 
