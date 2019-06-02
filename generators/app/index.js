@@ -75,8 +75,13 @@ function create_appContainer() {
     chunkCommonClientLib: '/src/chunk-common/.content.xml',
     editableAddedFile: '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
     customHeaderLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customheaderlibs.html',
-    customFooterLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html'
+    customFooterLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html',
+    basePageTemplate: '/src/templates/global/BasePage/BasePage-tmpl/.content.xml',
+    basePageClientLibs: '/src/templates/global/BasePage/publishLibs/.content.xml',
+    basePageIndexPage: '/src/templates/global/BasePage/index.pug'
   };
+
+  // D:\Projects\generator-aemvue\generators\app\templates\appName\src\templates\global\BasePage\publishLibs\.content.xml
   this.fs.copy(
     this.templatePath("appName"),
     this.destinationPath()

@@ -11,7 +11,7 @@
 >
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="/apps/aemarch13/dist/templates/global/BasePage/BasePage-cmp"
+        sling:resourceType="/apps/<%= options.appName %>/dist/templates/global/BasePage/BasePage-cmp"
     >
     </jcr:content>
 </jcr:root>

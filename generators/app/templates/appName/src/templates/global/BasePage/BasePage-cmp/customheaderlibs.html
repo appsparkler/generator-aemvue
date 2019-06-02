@@ -1,6 +1,6 @@
 <!-- CALL ONLY BASE PAGE CLIENT-LIBS -->
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
-     data-sly-call="${clientlib.css @ categories='aemarch13.BasePage'}" />
+     data-sly-call="${clientlib.css @ categories='<%= options.appName %>.templates.BasePage'}" />
 
 <!-- CALL ALL CLIENTLBS FOR COMPONENTS HERE -->
 <sly data-sly-use.templates="/apps/<%= options.appName %>/dist/HTLTemplates/recursiveClientLibsTemplate.html"
