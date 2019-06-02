@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jcr:root
+  xmlns:sling="http://sling.apache.org/jcr/sling/1.0"
+  xmlns:cq="http://www.day.com/jcr/cq/1.0"
+  xmlns:jcr="http://www.jcp.org/jcr/1.0"
+  jcr:description="Template for all pages on the website.  It is like a container for the content. Since header and footer will be the same on all the pages along with other meta data, this template will have the header and footer along with all shared blocks of code."
+  jcr:primaryType="cq:Template"
+  jcr:title="Base Page Template"
+  allowedPaths="[/content/.+]"
+  ranking="{Long}100"
+>
+    <jcr:content
+        jcr:primaryType="cq:PageContent"
+        sling:resourceType="/apps/aemarch13/dist/templates/global/BasePage/BasePage-cmp"
+    >
+    </jcr:content>
+</jcr:root>

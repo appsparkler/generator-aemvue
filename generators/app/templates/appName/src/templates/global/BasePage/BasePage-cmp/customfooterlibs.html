@@ -1,0 +1,15 @@
+
+<!-- CALL ALL CLIENTLBS FOR COMPONENTS HERE -->
+<sly
+	data-sly-use.templates="/apps/aemarch13/dist/HTLTemplates/recursiveClientLibsTemplate.html"
+	data-sly-test="${resource.hasChildren}"
+  data-sly-list="${resource.listChildren}"
+>
+	<sly data-sly-call="${templates.recursiveClientLibsTemplate @ item=item, type='js'}"></sly>
+</sly>
+
+
+<!-- CALL ONLY BASE PAGE CLIENT-LIBS -->
+<sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+  <sly data-sly-call="${clientlib.js @ categories='aemarch13.BasePage'}" />
+</sly>

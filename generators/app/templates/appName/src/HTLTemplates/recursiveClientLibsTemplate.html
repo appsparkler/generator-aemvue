@@ -1,0 +1,34 @@
+<template data-sly-template.recursiveClientLibsTemplate="${ @ item, type}">
+
+  <sly data-sly-test="${item.hasChildren}"
+       data-sly-list="${item.listChildren}">
+    <!-- DON'T ITERATE IF resourceType is 'responsivegrid' -->
+    <sly data-sly-test="${item.sling:resourceType != 'wcm/foundation/components/responsivegrid'}">
+      <!-- RESOLVE the ITEM'S SLING:RESOURCETYPE which should be the component-resource -->
+      <sly data-sly-test="${item.sling:resourceType}"
+           data-sly-use.componentResource="/apps/${item.sling:resourceType}">
+        <!-- GET TO THE CLIENT-LIBRARY-FOLDER of the component -->
+        <sly data-sly-test="${componentResource.hasChildren}"
+             data-sly-list="${componentResource.listChildren}">
+          <sly data-sly-test="${item.name == 'publishLibs'}">
+            <sly data-sly-test="${item.hasChildren}"
+                 data-sly-list="${item.listChildren}">
+              <sly data-sly-test="${item.jcr:primaryType == 'cq:ClientLibraryFolder'}">
+                <sly data-sly-use.clientlib="/libs/granite/sightly/templates/clientlib.html">
+                  <sly data-sly-test="${type == 'js'}"
+                       data-sly-call="${clientlib.js @ categories=item.categories}" />
+                  <sly data-sly-test="${type == 'css'}"
+                       data-sly-call="${clientlib.css @ categories=item.categories}" />
+                </sly>
+              </sly>
+            </sly>
+          </sly>
+        </sly>
+      </sly>
+    </sly>
+
+    <!-- TEMPLATE RECURSION WITH CHILD ITEM -->
+    <sly data-sly-call="${recursiveClientLibsTemplate @ item=item, type=type}"></sly>
+  </sly>
+
+</template>
