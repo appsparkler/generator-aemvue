@@ -23,7 +23,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    // setConfig.call(this);
+    setConfig.call(this);
   }
 
   default() {}
@@ -45,12 +45,38 @@ module.exports = class extends Generator {
 };
 
 // private functions
+
+function setConfig() {
+  const YoRC = this.config.getAll();
+  YoRC.appName = this.options.appName;
+  // const templateName = this.answers.template.templateName;
+  // const category = this.answers.template.category;
+  // const templatePath = `templates/${category}/${templateName}`;
+  // const TemplateComponents = YoRC.templateContainer.TemplateComponents;
+  // TemplateComponents[templatePath] = templateName;
+  // YoRC.templateContainer.TemplateComponents = TemplateComponents;
+  this.config.set(YoRC);
+}
+
 function create_appContainer() {
   this.fs.copy(
     this.templatePath("appName"),
     this.destinationPath(this.options.appName)
   );
 }
+
+function welcomeTheUser() {
+  this.log(
+    yosay(
+      ` Welcome to the
+        ${chalk.bgGreen.black(
+          "AEM-VUE-GENERATOR !!!"
+        )}
+      `
+    )
+  );
+}
+
 function reWriteTemplateComponentsFile() {
   var TemplateComponents = this.config.getAll().templateContainer.TemplateComponents;
   var template = this.answers.template;
@@ -69,17 +95,6 @@ function copyChildComponentsFile() {
       `./src/templates/${category}/${templateName}/aem-component/child-page-components.html`
     )
   );
-}
-
-function setConfig() {
-  const YoRC = this.config.getAll();
-  const templateName = this.answers.template.templateName;
-  const category = this.answers.template.category;
-  const templatePath = `templates/${category}/${templateName}`;
-  const TemplateComponents = YoRC.templateContainer.TemplateComponents;
-  TemplateComponents[templatePath] = templateName;
-  YoRC.templateContainer.TemplateComponents = TemplateComponents;
-  this.config.set(YoRC);
 }
 
 function copyConfigFile() {
@@ -106,15 +121,6 @@ function copyVueComponentFile() {
   );
 }
 
-function welcomeTheUser() {
-  this.log(
-    yosay(
-      `Welcome to the AEM VUE (AV) ${chalk.bgGreen.black(
-        "::CONTAINER TEMPLATE::"
-      )} generator!!!`
-    )
-  );
-}
 
 function userFarewell() {
   this.log(
