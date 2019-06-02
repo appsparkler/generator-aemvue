@@ -1,9 +1,9 @@
 <!-- CALL ONLY BASE PAGE CLIENT-LIBS -->
 <sly data-sly-use.clientLib="/libs/granite/sightly/templates/clientlib.html"
-     data-sly-call="${clientlib.css @ categories='<%= options.appName %>.templates.BasePage'}" />
+     data-sly-call="${clientlib.css @ categories='<%= answers.app.name %>.templates.BasePage'}" />
 
 <!-- CALL ALL CLIENTLBS FOR COMPONENTS HERE -->
-<sly data-sly-use.templates="/apps/<%= options.appName %>/dist/HTLTemplates/recursiveClientLibsTemplate.html"
+<sly data-sly-use.templates="/apps/<%= answers.app.name %>/dist/HTLTemplates/recursiveClientLibsTemplate.html"
      data-sly-test="${resource.hasChildren}"
      data-sly-list="${resource.listChildren}">
   <sly data-sly-call="${templates.recursiveClientLibsTemplate @ item=item, type='css'}"></sly>

@@ -3,6 +3,6 @@
   xmlns:cq="http://www.day.com/jcr/cq/1.0"
   xmlns:jcr="http://www.jcp.org/jcr/1.0"
   jcr:primaryType="cq:ClientLibraryFolder"
-  categories="[<%= options.appName %>.templates.BasePage]"
-  dependencies="[<%= options.appName %>.chunkVendors, <%= options.appName %>.chunkCommon]"
+  categories="[<%= answers.app.name %>.templates.BasePage]"
+  dependencies="[<%= answers.app.name %>.chunkVendors, <%= answers.app.name %>.chunkCommon]"
 />

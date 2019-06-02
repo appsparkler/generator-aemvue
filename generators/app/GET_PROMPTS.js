@@ -7,6 +7,13 @@ module.exports = function() {
   const PROMPTS = [
     //
     {
+      type: "input",
+      name: "app.name",
+      message: "Please enter the name of your WebApp. The value for this should match with the Maven Archetype App you have scaffolded : ",
+      default: this.options.appName,
+      required: true
+    },
+    {
         type: "input",
         name: "app.pathToAEMProject",
         message: "Please enter the path to the AEM Project folder: ",

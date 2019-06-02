@@ -4,7 +4,7 @@
 
   // private functions
   function init() {
-    var isCorrectWebsite = window.location.href.indexOf('<%= options.appName %>') > -1;
+    var isCorrectWebsite = window.location.href.indexOf('<%= answers.app.name %>') > -1;
 
     if (isCorrectWebsite) {
       $document.on('cq-inspectable-added', cb_inspectableAdded);

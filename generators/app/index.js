@@ -15,7 +15,7 @@ module.exports = class extends Generator {
   }
 
   // paths() {
-  //   this.destinationRoot(this.options.appName);
+  //   this.destinationRoot(this.answers.app.name);
   // }
 
   initializing() {
@@ -27,7 +27,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    this.destinationRoot(`${this.options.appName}-webapp`);
+    this.destinationRoot(`${this.answers.app.name}-webapp`);
     setConfig.call(this);
   }
 
@@ -51,7 +51,7 @@ module.exports = class extends Generator {
 
 // private functions
 function setConfig() {
-  this.config.set('appName', this.options.appName);
+  this.config.set('appName', this.answers.app.name);
   this.config.set(
     'pathToAEMProjectFolder',
     this.answers.app.pathToAEMProject
@@ -70,7 +70,7 @@ function setConfig() {
       }
     }
   });
-  // YoRC.appName = this.options.appName;
+  // YoRC.appName = this.answers.app.name;
   // YoRC.pathToAEMProjectFolder = this.answers.app.pathToAEMProject;
   // const templateName = this.answers.template.templateName;
   // const category = this.answers.template.category;
@@ -84,30 +84,32 @@ function setConfig() {
 
 function scaffold_app() {
   const path = require('path');
-  const filePaths = {
-    chunkVendorsClientLib: '/src/chunk-vendors/.content.xml',
-    chunkCommonClientLib: '/src/chunk-common/.content.xml',
-    editableAddedFile: '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
-    customHeaderLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customheaderlibs.html',
-    customFooterLibsHTML: '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html',
-    basePageTemplate: '/src/templates/global/BasePage/BasePage-tmpl/.content.xml',
-    basePageClientLibs: '/src/templates/global/BasePage/publishLibs/.content.xml',
-    basePageIndexPage: '/src/templates/global/BasePage/index.pug',
-    '.env': '/.env'
-  };
-
+  const filePaths = [
+    '/src/chunk-vendors/.content.xml',
+    '/src/chunk-common/.content.xml',
+    '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
+    '/src/templates/global/BasePage/BasePage-cmp/customheaderlibs.html',
+    '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html',
+    '/src/templates/global/BasePage/BasePage-tmpl/.content.xml',
+    '/src/templates/global/BasePage/publishLibs/.content.xml',
+    '/src/templates/global/BasePage/index.pug',
+    '/.env',
+    '/.env.development',
+    '/.env.production'
+  ];
   // D:\Projects\generator-aemvue\generators\app\templates\appName\src\templates\global\BasePage\publishLibs\.content.xml
   this.fs.copy(
     this.templatePath("appName"),
     this.destinationPath()
   );
-  Object.keys(filePaths).forEach(key => {
+  //
+  filePaths.forEach(key => {
     this.fs.copyTpl(
       this.templatePath(path.join('appName', filePaths[key])),
       path.join(this.destinationRoot(), filePaths[key]),
       this
     )
-  })
+  });
   /*
   this.fs.copyTpl(
     this.templatePath(path.join('appName', filePaths.chunkCommonClientLib)),

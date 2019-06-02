@@ -11,7 +11,7 @@
 >
     <jcr:content
         jcr:primaryType="cq:PageContent"
-        sling:resourceType="/apps/<%= options.appName %>/dist/templates/global/BasePage/BasePage-cmp"
+        sling:resourceType="/apps/<%= answers.app.name %>/dist/templates/global/BasePage/BasePage-cmp"
     >
     </jcr:content>
 </jcr:root>
