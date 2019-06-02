@@ -69,16 +69,35 @@ function setConfig() {
 }
 
 function create_appContainer() {
+  const path = require('path');
+  const filePaths = {
+    chunkVendorsClientLib: '/src/chunk-vendors/.content.xml',
+    chunkCommonClientLib: '/src/chunk-common/.content.xml',
+    editableAddedFile: '/src/clientlibs/authoring/js/listeners/edtiable-added.js'
+  };
   this.fs.copy(
     this.templatePath("appName"),
     this.destinationPath()
   );
+  Object.keys(filePaths).forEach(key => {
+    this.fs.copyTpl(
+      this.templatePath(path.join('appName', filePaths[key])),
+      path.join(this.destinationRoot(), filePaths[key]),
+      this
+    )
+  })
+  /*
   this.fs.copyTpl(
-    this.templatePath("appName/src/chunk-common/.content.xml"),
-    this.destinationPath('src/chunk-common/.content.xml'),
+    this.templatePath(path.join('appName', filePaths.chunkCommonClientLib)),
+    this.destinationPath(filePaths.chunkCommonClientLib),
     this
   )
-  console.log(this);
+  this.fs.copyTpl(
+    this.templatePath("appName", filePaths.editableAddedFile),
+    this.destinationPath(filePaths.editableAddedFile),
+    this
+  )
+  */
 }
 
 function welcomeTheUser() {
