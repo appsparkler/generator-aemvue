@@ -14,6 +14,10 @@ module.exports = class extends Generator {
     });
   }
 
+  // paths() {
+  //   this.destinationRoot(this.options.appName);
+  // }
+
   initializing() {
     welcomeTheUser.call(this);
   }
@@ -23,6 +27,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
+    this.destinationRoot(this.options.appName);
     setConfig.call(this);
   }
 
@@ -45,23 +50,25 @@ module.exports = class extends Generator {
 };
 
 // private functions
-
 function setConfig() {
-  const YoRC = this.config.getAll();
-  YoRC.appName = this.options.appName;
+  this.config.set('appName', this.options.appName);
+  this.config.set('pathToAEMProjectFolder', this.answers.app.pathToAEMProject);
+  // YoRC.appName = this.options.appName;
+  // YoRC.pathToAEMProjectFolder = this.answers.app.pathToAEMProject;
   // const templateName = this.answers.template.templateName;
   // const category = this.answers.template.category;
   // const templatePath = `templates/${category}/${templateName}`;
   // const TemplateComponents = YoRC.templateContainer.TemplateComponents;
   // TemplateComponents[templatePath] = templateName;
   // YoRC.templateContainer.TemplateComponents = TemplateComponents;
-  this.config.set(YoRC);
+  // console.log(YoRC);
+  // this.config.set(YoRC);
 }
 
 function create_appContainer() {
   this.fs.copy(
     this.templatePath("appName"),
-    this.destinationPath(this.options.appName)
+    this.destinationPath()
   );
 }
 
