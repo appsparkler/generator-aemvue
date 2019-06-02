@@ -19,7 +19,7 @@ module.exports = class extends Generator {
   }
 
   async prompting() {
-    // await setAnswersForPrompts.call(this);
+    await setAnswersForPrompts.call(this);
   }
 
   configuring() {
