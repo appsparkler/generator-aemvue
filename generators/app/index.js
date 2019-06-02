@@ -14,10 +14,6 @@ module.exports = class extends Generator {
     });
   }
 
-  // paths() {
-  //   this.destinationRoot(this.answers.app.name);
-  // }
-
   initializing() {
     welcomeTheUser.call(this);
   }
@@ -35,13 +31,6 @@ module.exports = class extends Generator {
 
   writing() {
     scaffold_app.call(this);
-    // copyFolderJCR.call(this);
-    // copyTemplateJCR.call(this);
-    // copyComponentJCR.call(this);
-    // copyConfigFile.call(this);
-    // copyVueComponentFile.call(this);
-    // copyChildComponentsFile.call(this);
-    // reWriteTemplateComponentsFile.call(this);
   }
 
   end() {
