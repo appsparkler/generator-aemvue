@@ -34,7 +34,7 @@ module.exports = class extends Generator {
   default() {}
 
   writing() {
-    create_appContainer.call(this);
+    scaffold_app.call(this);
     // copyFolderJCR.call(this);
     // copyTemplateJCR.call(this);
     // copyComponentJCR.call(this);
@@ -68,7 +68,7 @@ function setConfig() {
   // this.config.set(YoRC);
 }
 
-function create_appContainer() {
+function scaffold_app() {
   const path = require('path');
   const filePaths = {
     chunkVendorsClientLib: '/src/chunk-vendors/.content.xml',
