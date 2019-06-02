@@ -84,7 +84,7 @@ function setConfig() {
 
 function scaffold_app() {
   const path = require('path');
-  const filePaths = [
+  const templatePaths = [
     '/src/chunk-vendors/.content.xml',
     '/src/chunk-common/.content.xml',
     '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
@@ -95,18 +95,17 @@ function scaffold_app() {
     '/src/templates/global/BasePage/index.pug',
     '/.env',
     '/.env.development',
-    '/.env.production'
+    '/.env.production',
+    '/.gitignore'
   ];
-  // D:\Projects\generator-aemvue\generators\app\templates\appName\src\templates\global\BasePage\publishLibs\.content.xml
   this.fs.copy(
     this.templatePath("appName"),
     this.destinationPath()
   );
-  //
-  filePaths.forEach(key => {
+  templatePaths.forEach(key => {
     this.fs.copyTpl(
-      this.templatePath(path.join('appName', filePaths[key])),
-      path.join(this.destinationRoot(), filePaths[key]),
+      this.templatePath(path.join('appName', key)),
+      path.join(this.destinationRoot(), key),
       this
     )
   });
@@ -184,11 +183,16 @@ function copyVueComponentFile() {
 function userFarewell() {
   this.log(
     yosay(
-      `Thank you for working with AEM VUE (AV) ${chalk.bgGreen.black(
-        "::TEMPLATE::"
-      )} generator!!!  Have a good day!!!`
+      `Thank you for scaffolding your app with
+        ${chalk.bgGreen.black(
+          "AEM-VUE-GENERATOR"
+        )}
+        ...
+      `
     )
   );
+  this.log('Please wait while we install your node_modules...');
+  this.npmInstall();
 }
 
 async function setAnswersForPrompts() {
