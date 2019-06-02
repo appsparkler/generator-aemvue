@@ -9,7 +9,7 @@ module.exports = function() {
     {
         type: "input",
         name: "app.pathToAEMProject",
-        message: "Please enter the path to the AEM Project folder.",
+        message: "Please enter the path to the AEM Project folder: ",
         validate: validate_pathToAEMProject.bind(this)
       }
     // template.templateName
@@ -119,7 +119,19 @@ module.exports = function() {
 };
 
 // private functions
-function validate_pathToAEMProject() {
-  console.log(arguments);
-  return false;
+function validate_pathToAEMProject(answer) {
+  try {
+      const fs = require('fs-extra');
+      const path = require('path');
+      const uiAppDirPath = path.resolve(answer, 'ui.apps');
+      const errMsgs = {
+        invalidDir: "The directory is not valid",
+        missingUIAppsDirs: "This directory doesn't have a ui.apps folder"
+      };
+      if(!fs.lstatSync(answer).isDirectory()) return errMsgs.invalidDir;
+      else if(!fs.lstatSync(uiAppDirPath).isDirectory()) return errMsgs.missingUIAppsDirs;
+      else return true;
+  } catch (e) {
+      console.log(e);
+  }
 }
