@@ -52,7 +52,10 @@ module.exports = class extends Generator {
 // private functions
 function setConfig() {
   this.config.set('appName', this.options.appName);
-  this.config.set('pathToAEMProjectFolder', this.answers.app.pathToAEMProject);
+  this.config.set(
+    'pathToAEMProjectFolder',
+    this.answers.app.pathToAEMProject
+  );
   // YoRC.appName = this.options.appName;
   // YoRC.pathToAEMProjectFolder = this.answers.app.pathToAEMProject;
   // const templateName = this.answers.template.templateName;
@@ -70,6 +73,12 @@ function create_appContainer() {
     this.templatePath("appName"),
     this.destinationPath()
   );
+  this.fs.copyTpl(
+    this.templatePath("appName/src/chunk-common/.content.xml"),
+    this.destinationPath('src/chunk-common/.content.xml'),
+    this
+  )
+  console.log(this);
 }
 
 function welcomeTheUser() {
