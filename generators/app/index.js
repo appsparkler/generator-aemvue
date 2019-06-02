@@ -56,6 +56,20 @@ function setConfig() {
     'pathToAEMProjectFolder',
     this.answers.app.pathToAEMProject
   );
+  this.config.set("templates", {
+    "global": {
+      "BasePage": {
+        "name": "BasePage",
+        "title": "The Base Template Page",
+        "description": "This is the Base Template Page which loads all the vendor and common scripts along with the HTML document",
+        "chunks": [
+          "chunk-vendors",
+          "chunk-common",
+          "templates/global/BasePage/publishLibs"
+        ]
+      }
+    }
+  });
   // YoRC.appName = this.options.appName;
   // YoRC.pathToAEMProjectFolder = this.answers.app.pathToAEMProject;
   // const templateName = this.answers.template.templateName;
