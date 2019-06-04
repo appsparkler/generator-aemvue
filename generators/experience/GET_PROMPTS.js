@@ -2,32 +2,33 @@
 module.exports = function() {
   const changeCase = require('change-case');
   const PROMPTS = [
-    //
     {
       type: "input",
       name: "xp.component.category",
       message: "Please enter the category under which you would like to create this experience: ",
       required: true
-    },
-    {
+    },{
         type: "input",
         name: "xp.component.name",
         message: "Please enter the name of your experience (this will be converted to camelCase) (examples: imageLink, textLink, carousel): ",
         required: true,
         filter: (userInput) => changeCase.camel(userInput)
-    },
-    {
+    },{
         type: "input",
         name: "xp.component.title",
         message: "Please update a title for your experience (Ex. Navbar, Footer..): ",
         required: true
-    },
-    {
+    },{
         type: "input",
         name: "xp.component.group",
         message: "Please select the component group for this component: ",
         required: true
-    },
+    },{
+        type: "input",
+        name: "xp.component.group",
+        message: "Please enter the component group for this component: ",
+        required: true
+    }
 
     // template.templateName
   /*  {

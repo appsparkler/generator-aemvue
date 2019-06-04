@@ -3,9 +3,8 @@ answers
     component
       category
       name
-      componentGroup
       title
-      camelCaseName
+      componentGroup
 
     designDialog
       title
