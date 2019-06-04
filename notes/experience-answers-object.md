@@ -3,6 +3,7 @@ answers
     category
     name
     componentGroup
+    title
 
     designDialog
       title
