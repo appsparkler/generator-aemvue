@@ -1,15 +1,15 @@
 import $ from 'jquery';
 import Vue from 'vue';
 //
-import XTNavbarComponentConfig from './xt-navbar-config'
+import <%= modifiedAnswers.name %>ComponentConfig from './<%= modifiedAnswers.name %>Config'
 global.vueComponents = global.vueComponents || [];
-setup_XTNavbarComponents();
+setup_<%= modifiedAnswers.name %>Components();
 
 // private functions
-function setup_XTNavbarComponents() {
-    $('[is^=xt-navbar]').each(generate_xtNavbarComponent);
+function setup_<%= modifiedAnswers.name %>Components() {
+    $('[is^=<%= modifiedAnswers.name %>]').each(generate_<%= modifiedAnswers.name %>Component);
 }
 
-function generate_xtNavbarComponent() {
-    vueComponents.push(new XTNavbarComponentConfig(this));
+function generate_<%= modifiedAnswers.name %>Component() {
+    vueComponents.push(new <%= modifiedAnswers.name %>ComponentConfig(this));
 }
