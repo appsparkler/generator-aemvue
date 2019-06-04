@@ -4,26 +4,9 @@ import Extractor from 'classes/VueComponentNameAndTemplateStringExtractor';
 import './styles.scss';
 
 // scripts
-export default class XTNavbarComponentConfig {
+export default class <%= modifiedAnswers.config %>ComponentConfig {
   // name and config do not need to be added as they will be generated dynamically from the document HTML
-  config = {
-    data: function() {
-      return {
-        test: 'Hello...',
-        imageLinkConfig: {
-          linkClicked() {
-            alert('link Clicked passed from parent...');
-          }
-        }
-      };
-    },
-    //
-    methods: {
-      linkClicked() {
-        alert('link Clicked...')
-      }
-    }
-  }
+  config = { }
 
   constructor(el) {
     const extractor = new Extractor(el);

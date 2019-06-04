@@ -1,0 +1,17 @@
+if process.env.isProd
+  div(
+    data-sly-test="${currentStyle}"
+    is='${component.name}-${resource.name}-${resource.parent.name}' 
+  )
+  
+  sly(data-sly-test="${wcmmode.isEdit}")
+    div(
+      class="container border border-info" 
+      data-sly-test="${!currentStyle}"
+    )
+      span.badge.badge-info Please update Policy for ${resource.name}
+    
+else 
+    
+    h1 Experience Starter Template
+    
