@@ -4,6 +4,7 @@ const Generator = require("yeoman-generator");
 const chalk = require("chalk");
 const yosay = require("yosay");
 const GET_PROMPTS = require("./GET_PROMPTS");
+const changeCase = require('change-case');
 
 module.exports = class extends Generator {
 
@@ -141,6 +142,7 @@ function conduct_userFarewell() {
 async function set_AnswersForPrompts() {
   const PROMPTS = GET_PROMPTS.call(this);
   this.answers = await this.prompt(PROMPTS);
+  this.answers.xp.component.name = changeCase.camel(this.answers.xp.component.name);
   console.log(this.answers);
 }
 
