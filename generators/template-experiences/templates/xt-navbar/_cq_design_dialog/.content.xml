@@ -5,33 +5,20 @@
   xmlns:jcr="http://www.jcp.org/jcr/1.0"
   xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
   jcr:primaryType="nt:unstructured"
-  jcr:title="XT Image Link Editor"
+  jcr:title="<%= answers.xp.designDialog.title %>"
+  jcr:description="<%= answers.xp.designDialog.description %>"
   sling:resourceType="cq/gui/components/authoring/dialog"
 >
   <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">
     <items jcr:primaryType="nt:unstructured">
       <container jcr:primaryType="nt:unstructured" maximized="true" sling:resourceType="granite/ui/components/coral/foundation/container">
         <items jcr:primaryType="nt:unstructured">
-          <navCSSClasses
+          <sampleTextField
               jcr:primaryType="nt:unstructured"
               sling:resourceType="/libs/granite/ui/components/coral/foundation/form/textfield"
-              fieldDescription="CSS Classes on NAV HTML element"
-              fieldLabel="NAV CSS Classes"
-              name="./navCSSClasses"/>
-          <collapseButtonTogglerClasses
-              jcr:primaryType="nt:unstructured"
-              sling:resourceType="/libs/granite/ui/components/coral/foundation/form/textfield"
-              fieldDescription="CSS Classes on BUTTON HTML element"
-              fieldLabel="Collapse-butotn CSS Classes"
-              name="./collapseButtonToggler"/>
-
-          <navbarTogglerIcon
-            jcr:primaryType="nt:unstructured"
-            sling:resourceType="/libs/granite/ui/components/coral/foundation/form/textfield"
-            fieldDescription="CSS Classes on SPAN HTML element"
-            fieldLabel="Navbar Toggler Icon CSS Classes"
-            name="./navbarTogglerIcon"
-          />
+              fieldDescription="This is a sample text field"
+              fieldLabel="Sample Text Field"
+              name="./sampleItem"/>
         </items>
       </container>
     </items>

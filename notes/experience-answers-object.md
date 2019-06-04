@@ -1,0 +1,10 @@
+answers
+  xp
+    category
+    name
+    designDialog
+      title
+      description
+    editDialog
+      title
+      description
