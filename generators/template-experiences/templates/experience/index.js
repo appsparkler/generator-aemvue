@@ -1,15 +1,15 @@
 import $ from 'jquery';
 import Vue from 'vue';
 //
-import <%= modifiedAnswers.name %>ComponentConfig from './<%= modifiedAnswers.name %>Config'
+import <%= answers.component.camelCaseName %>ComponentConfig from './<%= answers.component.camelCaseName %>Config'
 global.vueComponents = global.vueComponents || [];
-setup_<%= modifiedAnswers.name %>Components();
+setup_<%= answers.component.camelCaseName %>Components();
 
 // private functions
-function setup_<%= modifiedAnswers.name %>Components() {
-    $('[is^=<%= modifiedAnswers.name %>]').each(generate_<%= modifiedAnswers.name %>Component);
+function setup_<%= answers.component.camelCaseName %>Components() {
+    $('[is^=<%= answers.component.camelCaseName %>]').each(generate_<%= answers.component.camelCaseName %>Component);
 }
 
-function generate_<%= modifiedAnswers.name %>Component() {
-    vueComponents.push(new <%= modifiedAnswers.name %>ComponentConfig(this));
+function generate_<%= answers.component.camelCaseName %>Component() {
+    vueComponents.push(new <%= answers.component.camelCaseName %>ComponentConfig(this));
 }

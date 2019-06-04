@@ -1,9 +1,11 @@
 answers
   xp
-    category
-    name
-    componentGroup
-    title
+    component
+      category
+      name
+      componentGroup
+      title
+      camelCaseName
 
     designDialog
       title
@@ -14,5 +16,5 @@ answers
       description
 
 modifiedAnswers
-  category
-  name
+  component
+    name
