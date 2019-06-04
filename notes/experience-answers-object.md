@@ -13,7 +13,6 @@ answers
       title
       description
 
-
 modifiedAnswers
   category
   name
