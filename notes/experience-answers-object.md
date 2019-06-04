@@ -13,7 +13,3 @@ answers
     editDialog
       title
       description
-
-modifiedAnswers
-  component
-    name

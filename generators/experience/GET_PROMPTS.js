@@ -2,6 +2,7 @@
 module.exports = function() {
   const changeCase = require('change-case');
   const PROMPTS = [
+    // COMPONENT
     {
       type: "input",
       name: "xp.component.category",
@@ -21,15 +22,36 @@ module.exports = function() {
     },{
         type: "input",
         name: "xp.component.group",
-        message: "Please select the component group for this component: ",
+        message: "Please enter the component-group for this experience: ",
+        required: true
+    },
+
+    // DESIGN DIALOG
+    {
+        type: "input",
+        name: "xp.designDialog.title",
+        message: "Please enter the design-dialog title for this experience  (leave blank if a design dialog is not required): ",
         required: true
     },{
         type: "input",
-        name: "xp.component.group",
-        message: "Please enter the component group for this component: ",
+        name: "xp.designDialog.description",
+        message: "Please enter the description for the design-dialog: ",
         required: true
+    },
+
+    // EDIT DIALOG
+    {
+        type: "input",
+        message: "Please enter the title for the edit-dialog (leave blank if a edit dialog is not required): ",
+        name: "xp.editDialog.title",
+        required: true
+    },{
+        type: "input",
+        message: "Please enter the description for the edit-dialog: ",
+        name: "xp.editDialog.description",
     }
 
+    // 
     // template.templateName
   /*  {
       type: "input",
