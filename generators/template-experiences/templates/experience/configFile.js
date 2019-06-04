@@ -4,7 +4,7 @@ import Extractor from 'classes/VueComponentNameAndTemplateStringExtractor';
 import './styles.scss';
 
 // scripts
-export default class <%= modifiedAnswers.config %>ComponentConfig {
+export default class <%= answers.component.camelCaseName %>ComponentConfig {
   // name and config do not need to be added as they will be generated dynamically from the document HTML
   config = { }
 
