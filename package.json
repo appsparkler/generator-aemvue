@@ -17,6 +17,7 @@
     "yeoman-generator"
   ],
   "devDependencies": {
+    "change-case": "^3.1.0",
     "coveralls": "^3.0.2",
     "eslint": "^5.9.0",
     "eslint-config-prettier": "^3.3.0",
