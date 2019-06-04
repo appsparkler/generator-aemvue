@@ -4,7 +4,7 @@ answers
       category
       name
       title
-      componentGroup
+      group
 
     designDialog
       title
