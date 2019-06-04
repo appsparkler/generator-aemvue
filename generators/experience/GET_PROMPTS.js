@@ -28,6 +28,7 @@ module.exports = function() {
         message: "Please select the component group for this component: ",
         required: true
     },
+
     // template.templateName
   /*  {
       type: "input",
