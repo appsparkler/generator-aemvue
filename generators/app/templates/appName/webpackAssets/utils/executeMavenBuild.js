@@ -3,9 +3,8 @@ module.exports = function() {
   const { exec } = require('child_process');
   const path = require('path')
   const appConfig = require(path.resolve('.yo-rc.json'))['generator-aemvue'];
-  const appName = appConfig.appName;
   const pathToAEMProjectFolder = appConfig.pathToAEMProjectFolder;
-  const AEMUIAPPSPath = path.resolve(pathToAEMProjectFolder, appName, 'ui.apps');
+  const AEMUIAPPSPath = path.resolve(pathToAEMProjectFolder, 'ui.apps');
   const mvnInstallExe = exec(`mvn -PautoInstallPackage clean install -o`, {
     cwd: AEMUIAPPSPath
   });
