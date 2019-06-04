@@ -7,13 +7,13 @@ First, install [Yeoman](http://yeoman.io) and generator-av using [npm](https://w
 
 ```bash
 npm install -g yo
-npm install -g generator-av
+npm install -g generator-aemvue
 ```
 
 Then generate your new project:
 
 ```bash
-yo av
+yo aemvue <appName>
 ```
 
 ## Getting To Know Yeoman
