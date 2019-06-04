@@ -21,7 +21,6 @@ module.exports = function (isDev) {
                 const component = appConfig[path1][path2][componentNode];
                 pages[`${path1}/${path2}/${component.name}/publishLibs`] = {
                   entry: path.resolve(`src/${path1}/${path2}/${component.name}/index.js`),
-                  template: path.resolve(`src/${path1}/${path2}/${component.name}/index.pug`),
                   filename: isDev ?
                   `${path1}/${path2}/${component.name}/index.html` :
                   `recycle-bin/${path1}/${path2}/${component.name}/index.html`,

@@ -226,12 +226,6 @@ function get_pages() {
             chunks: [
               'chunk-vendors',
               'chunk-common',
-              //
-              "components/global/image-link/publishLibs",
-              "experiences/global/xt-navbar/publishLibs",
-              "experiences/global/xt-container/publishLibs",
-              "templates/global/BasePage/publishLibs",
-              //
               'FEAppIndex'
             ]
         };

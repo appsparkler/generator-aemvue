@@ -1,4 +1,5 @@
 module.exports = function() {
+  let dataEvents = 0;
   const { exec } = require('child_process');
   const path = require('path')
   const appConfig = require(path.resolve('appConfig.json'));
@@ -9,8 +10,11 @@ module.exports = function() {
     cwd: AEMUIAPPSPath
   });
 
+
   mvnInstallExe.stdout.on('data', function (data) {
-    console.log(data.toString());
+    const buildMsg = 'Maven is building and deploying your project.  Please wait...';
+    if (!dataEvents) console.log(buildMsg);
+    dataEvents = 1;
   });
 
   mvnInstallExe.stderr.on('data', function (data) {
