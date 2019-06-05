@@ -23,7 +23,7 @@ module.exports = class extends Generator {
   default() {}
 
   writing() {
-    // scaffold_app.call(this);
+    scaffold_experience.call(this);
   }
 
   end() {
@@ -98,50 +98,60 @@ function set_config() {
     */
 }
 
-function scaffold_app() {
+function scaffold_experience() {
   const path = require('path');
+  // this.destinationRoot('experienceTemplate');
   const templatePaths = [
-    '/src/chunk-vendors/.content.xml',
-    '/src/chunk-common/.content.xml',
-    '/src/clientlibs/authoring/js/listeners/edtiable-added.js',
-    '/src/templates/global/BasePage/BasePage-cmp/customheaderlibs.html',
-    'package.json',
-    '/src/templates/global/BasePage/BasePage-cmp/customfooterlibs.html',
-    '/src/templates/global/BasePage/BasePage-tmpl/.content.xml',
-    '/src/templates/global/BasePage/publishLibs/.content.xml',
-    '/.env',
-    '/.env.development',
-    '/.env.production',
-    '/.gitignore'
+    {from: '.content.xml', to: '.content.xml'},
+    {from: 'componentTemplate.pug', to: `${this.answers.xp.component.name}.pug`}
   ];
-  this.fs.copy(
-    this.templatePath("appName"),
-    this.destinationPath()
-  );
+  const { answers } = this;
+  // this.fs.copy(
+  //   this.templatePath("experience"),
+  //   this.destinationPath(`src/experiences/${answers.xp.component.category}/${answers.xp.component.name}`)
+  // );
   // Copy All DOT (.) files
-  this.fs.copy(
-    this.templatePath('appName/**/.*'),
-    this.destinationRoot()
-  );
+  // this.fs.copy(
+  //   this.templatePath('experience/**/.*'),
+  //   this.destinationPath(`src/experiences/${answers.xp.component.category}/${answers.xp.component.name}`)
+  // );
   templatePaths.forEach(key => {
     this.fs.copyTpl(
-      this.templatePath(path.join('appName', key)),
-      path.join(this.destinationRoot(), key),
+      this.templatePath(path.join('experience', key.from)),
+      path.join(
+          this.destinationRoot(),
+          'src/experiences',
+          answers.xp.component.category,
+          answers.xp.component.name,
+          key.to
+      ),
       this
     )
   });
-  /*
-  this.fs.copyTpl(
-    this.templatePath(path.join('appName', filePaths.chunkCommonClientLib)),
-    this.destinationPath(filePaths.chunkCommonClientLib),
-    this
-  )
-  this.fs.copyTpl(
-    this.templatePath("appName", filePaths.editableAddedFile),
-    this.destinationPath(filePaths.editableAddedFile),
-    this
-  )
-  */
+  // this.fs.copyTpl(
+  //   this.templatePath(path.join('experience', 'componentTemplate.pug')),
+  //   path.join(
+  //     this.destinationRoot(),
+  //     'src/experiences',
+  //     answers.xp.component.category,
+  //     answers.xp.component.name,
+  //     `${answers.xp.component.name}.pug`
+  //   ),
+  //   this
+  // )
+
+  // /*
+  // this.fs.copyTpl(
+  //   this.templatePath(path.join('appName', filePaths.chunkCommonClientLib)),
+  //   this.destinationPath(filePaths.chunkCommonClientLib),
+  //   this
+  // )
+  // this.fs.copyTpl(
+  //   this.templatePath("appName", filePaths.editableAddedFile),
+  //   this.destinationPath(filePaths.editableAddedFile),
+  //   this
+  // )
+  // */
 }
 
 function welcome_theUser() {
