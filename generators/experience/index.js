@@ -48,54 +48,6 @@ function set_config() {
   };
   console.log(experienceConfig);
   this.config.set("experiences", experienceConfig);
-  // console.log(experienceConfig);
-
-  // this.config.set(
-  //   'pathToAEMProjectFolder',
-  //   this.answers.app.pathToAEMProject
-  // );
-  /*
-  "experiences": {
-        "global": {
-          "xt-navbar": {
-            "name": "xt-navbar",
-            "title": "XT Navbar",
-            "description": "This is the XT Navbar Experience.",
-            "chunks": [
-              "chunk-vendors",
-              "chunk-common",
-              "experiences/global/xt-navbar/publishLibs"
-            ]
-          },
-          "xt-container": {
-            "name": "xt-container",
-            "title": "XT Container",
-            "description": "This is the XT Responsive Container Experience.",
-            "chunks": [
-              "chunk-vendors",
-              "chunk-common",
-              "experiences/global/xt-container/publishLibs"
-            ]
-          }
-        }
-      }
-    }
-
-  this.config.set("templates", {
-    "global": {
-      "BasePage": {
-        "name": "BasePage",
-        "title": "The Base Template Page",
-        "description": "This is the Base Template Page which loads all the vendor and common scripts along with the HTML document",
-        "chunks": [
-          "chunk-vendors",
-          "chunk-common",
-          "templates/global/BasePage/publishLibs"
-        ]
-      }
-    }
-  });
-    */
 }
 
 function scaffold_experience() {
