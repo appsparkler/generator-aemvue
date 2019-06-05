@@ -3,7 +3,7 @@
 
 ## Installation
 
-First, install [Yeoman](http://yeoman.io) and generator-av using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
+First, install [Yeoman](http://yeoman.io) and generator-aemvue using [npm](https://www.npmjs.com/) (we assume you have pre-installed [node.js](https://nodejs.org/)).
 
 ```bash
 npm install -g yo
@@ -28,11 +28,11 @@ yo aemvue <appName>
 MIT © [Akash](appsparkler.com)
 
 
-[npm-image]: https://badge.fury.io/js/generator-av.svg
-[npm-url]: https://npmjs.org/package/generator-av
-[travis-image]: https://travis-ci.org/appsparkler/generator-av.svg?branch=master
-[travis-url]: https://travis-ci.org/appsparkler/generator-av
-[daviddm-image]: https://david-dm.org/appsparkler/generator-av.svg?theme=shields.io
-[daviddm-url]: https://david-dm.org/appsparkler/generator-av
-[coveralls-image]: https://coveralls.io/repos/appsparkler/generator-av/badge.svg
-[coveralls-url]: https://coveralls.io/r/appsparkler/generator-av
+[npm-image]: https://badge.fury.io/js/generator-aemvue.svg
+[npm-url]: https://npmjs.org/package/generator-aemvue
+[travis-image]: https://travis-ci.org/appsparkler/generator-aemvue.svg?branch=master
+[travis-url]: https://travis-ci.org/appsparkler/generator-aemvue
+[daviddm-image]: https://david-dm.org/appsparkler/generator-aemvue.svg?theme=shields.io
+[daviddm-url]: https://david-dm.org/appsparkler/generator-aemvue
+[coveralls-image]: https://coveralls.io/repos/appsparkler/generator-aemvue/badge.svg
+[coveralls-url]: https://coveralls.io/r/appsparkler/generator-aemvue
