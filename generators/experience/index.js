@@ -17,8 +17,7 @@ module.exports = class extends Generator {
   }
 
   configuring() {
-    // this.destinationRoot(`${this.answers.app.name}-webapp`);
-    // set_config.call(this);
+    set_config.call(this);
   }
 
   default() {}
@@ -34,11 +33,54 @@ module.exports = class extends Generator {
 
 // private functions
 function set_config() {
-  this.config.set('appName', this.answers.app.name);
-  this.config.set(
-    'pathToAEMProjectFolder',
-    this.answers.app.pathToAEMProject
-  );
+  const { xp } = this.answers;
+  let experienceConfig = this.config.get("experiences") || {};
+  experienceConfig[this.answers.xp.component.category] = experienceConfig[this.answers.xp.component.category] || {};
+  experienceConfig[this.answers.xp.component.category][this.answers.xp.component.name] = {
+    name: xp.component.name,
+    title: xp.component.title,
+    description: xp.component.description,
+    chunks: [
+      "chunk-vendors",
+      "chunk-common",
+      `experiences/global/${xp.component.name}/publishLibs`
+    ]
+  };
+  console.log(experienceConfig);
+  this.config.set("experiences", experienceConfig);
+  // console.log(experienceConfig);
+
+  // this.config.set(
+  //   'pathToAEMProjectFolder',
+  //   this.answers.app.pathToAEMProject
+  // );
+  /*
+  "experiences": {
+        "global": {
+          "xt-navbar": {
+            "name": "xt-navbar",
+            "title": "XT Navbar",
+            "description": "This is the XT Navbar Experience.",
+            "chunks": [
+              "chunk-vendors",
+              "chunk-common",
+              "experiences/global/xt-navbar/publishLibs"
+            ]
+          },
+          "xt-container": {
+            "name": "xt-container",
+            "title": "XT Container",
+            "description": "This is the XT Responsive Container Experience.",
+            "chunks": [
+              "chunk-vendors",
+              "chunk-common",
+              "experiences/global/xt-container/publishLibs"
+            ]
+          }
+        }
+      }
+    }
+
   this.config.set("templates", {
     "global": {
       "BasePage": {
@@ -53,16 +95,7 @@ function set_config() {
       }
     }
   });
-  // YoRC.appName = this.answers.app.name;
-  // YoRC.pathToAEMProjectFolder = this.answers.app.pathToAEMProject;
-  // const templateName = this.answers.template.templateName;
-  // const category = this.answers.template.category;
-  // const templatePath = `templates/${category}/${templateName}`;
-  // const TemplateComponents = YoRC.templateContainer.TemplateComponents;
-  // TemplateComponents[templatePath] = templateName;
-  // YoRC.templateContainer.TemplateComponents = TemplateComponents;
-  // console.log(YoRC);
-  // this.config.set(YoRC);
+    */
 }
 
 function scaffold_app() {
@@ -142,8 +175,8 @@ function conduct_userFarewell() {
 async function set_AnswersForPrompts() {
   const PROMPTS = GET_PROMPTS.call(this);
   this.answers = await this.prompt(PROMPTS);
+  // change the case of the comonent to camelCase.
   this.answers.xp.component.name = changeCase.camel(this.answers.xp.component.name);
-  console.log(this.answers);
 }
 
 function copyTemplateJCR() {
