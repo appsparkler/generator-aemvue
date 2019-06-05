@@ -12,6 +12,6 @@ if process.env.isProd
       span.badge.badge-info Please update Policy for ${resource.name}
     
 else 
-    
-    h1.bg-primary.text-white Starter Template For <%= answers.xp.component.title %>
-    
+  
+  div(is="xp-<%= answers.xp.component.category %>-<%= answers.xp.component.name %>-sample")
+    h1 The <%= answers.xp.component.title %> Experience 
