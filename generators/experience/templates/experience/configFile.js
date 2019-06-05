@@ -4,9 +4,11 @@ import Extractor from 'classes/VueComponentNameAndTemplateStringExtractor';
 import './styles.scss';
 
 // scripts
-export default class <%= answers.component.name %>ComponentConfig {
-  // name and config do not need to be added as they will be generated dynamically from the document HTML
-  config = { }
+export default class {
+  config = {
+    // update vue configuration here
+    // "name" and "template" should not be added here (as they are dynamically extracted from HTML)
+  }
 
   constructor(el) {
     const extractor = new Extractor(el);

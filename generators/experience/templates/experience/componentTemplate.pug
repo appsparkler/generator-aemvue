@@ -1,7 +1,7 @@
 if process.env.isProd
   div(
     data-sly-test="${currentStyle}"
-    is='${component.name}-${resource.name}-${resource.parent.name}' 
+    is='xp-<%= answers.xp.component.category %>-<%= answers.xp.component.name %>-${resource.name}-${resource.parent.name}' 
   )
   
   sly(data-sly-test="${wcmmode.isEdit}")

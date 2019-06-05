@@ -101,9 +101,15 @@ function set_config() {
 function scaffold_experience() {
   const path = require('path');
   // this.destinationRoot('experienceTemplate');
+  const { category, name } = this.answers.xp.component;
+  const className = this.answers.xp.component.className = changeCase.pascalCase(`${category} ${name}`);
   const templatePaths = [
     {from: '.content.xml', to: '.content.xml'},
-    {from: 'componentTemplate.pug', to: `${this.answers.xp.component.name}.pug`}
+    {from: 'componentTemplate.pug', to: `${name}.pug`},
+    {from: 'configFile.js', to: `${className}.js`},
+    {from: 'index.js', to: `index.js`},
+    {from: 'styles.scss', to: `styles.scss`},
+    {from: 'styles.scss', to: `styles.scss`},
   ];
   const { answers } = this;
   // this.fs.copy(
