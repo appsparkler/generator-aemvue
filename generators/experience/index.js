@@ -176,41 +176,7 @@ async function set_AnswersForPrompts() {
   const PROMPTS = GET_PROMPTS.call(this);
   this.answers = await this.prompt(PROMPTS);
   // change the case of the comonent to camelCase.
-  this.answers.xp.component.name = changeCase.camel(this.answers.xp.component.name);
-}
-
-function copyTemplateJCR() {
-  let {category, templateName} = this.answers.template;
-
-  this.fs.copyTpl(
-    this.templatePath("aem-tmpl/_content.xml"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/aem-tmpl/.content.xml`
-    ),
-    this.answers
-  );
-}
-
-function copyComponentJCR() {
-  let {category, templateName} = this.answers.template;
-
-  this.fs.copyTpl(
-    this.templatePath("aem-component/_content.xml"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/aem-component/.content.xml`
-    ),
-    this.answers
-  );
-}
-
-function copyFolderJCR() {
-  const {category, templateName} = this.answers.template;
-  this.fs.copy(
-    this.templatePath("_content.xml"),
-    this.destinationPath(
-      `./src/templates/${category}/${templateName}/.content.xml`
-    )
-  );
+  // this.answers.xp.component.name = changeCase.camelCase(this.answers.xp.component.name);
 }
 
 /*

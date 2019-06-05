@@ -1,27 +1,34 @@
 /*eslint-disable*/
 module.exports = function() {
-  const changeCase = require('change-case');
+  const { camelCase } = require('change-case');
   const PROMPTS = [
     // COMPONENT
     {
       type: "input",
       name: "xp.component.category",
-      message: "Please enter the category under which you would like to create this experience: ",
-      required: true
+      message: "category?",
+      required: true,
+      filter: userInput => camelCase(userInput)
     },{
         type: "input",
         name: "xp.component.name",
-        message: "Please enter the name of your experience: ",
+        message: "name : ",
         required: true,
+        filter: userInput => camelCase(userInput)
     },{
         type: "input",
         name: "xp.component.title",
-        message: "Please update a title for your experience (Ex. Navbar, Footer..): ",
+        message: "title?",
+        required: true
+    },{
+        type: "input",
+        name: "xp.component.description",
+        message: "description?",
         required: true
     },{
         type: "input",
         name: "xp.component.group",
-        message: "Please enter the component-group for this experience: ",
+        message: "Experience group?",
         required: true
     },
 
@@ -29,24 +36,23 @@ module.exports = function() {
     {
         type: "input",
         name: "xp.designDialog.title",
-        message: "Please enter the design-dialog title for this experience \n   (leave blank if a design dialog is not required...): ",
+        message: "Design dialog title?",
         required: true
     },{
         type: "input",
         name: "xp.designDialog.description",
-        message: "Please enter the description for the design-dialog: ",
+        message: "Design dialog description?",
         required: true
     },
 
     // EDIT DIALOG
     {
         type: "input",
-        message: "Please enter the title for the edit-dialog \n    (leave blank if a edit dialog is not required): ",
-        name: "xp.editDialog.title",
-        required: true
+        message: "Edit dialog title?",
+        name: "xp.editDialog.title"
     },{
         type: "input",
-        message: "Please enter the description for the edit-dialog : ",
+        message: "Edit dialog description?",
         name: "xp.editDialog.description",
     }
   ];
