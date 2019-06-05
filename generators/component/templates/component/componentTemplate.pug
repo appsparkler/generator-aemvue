@@ -1,0 +1,17 @@
+if process.env.isProd
+  div(
+    data-sly-test="${currentStyle}"
+    is='xp-<%= answers.xp.component.category %>-<%= answers.xp.component.name %>-${resource.name}-${resource.parent.name}' 
+  )
+  
+  sly(data-sly-test="${wcmmode.isEdit}")
+    div(
+      class="container border border-info" 
+      data-sly-test="${!currentStyle}"
+    )
+      span.badge.badge-info Please update Policy for ${resource.name}
+    
+else 
+  
+  div(is="xp-<%= answers.xp.component.category %>-<%= answers.xp.component.name %>-sample")
+    h1 The <%= answers.xp.component.title %> Experience 
