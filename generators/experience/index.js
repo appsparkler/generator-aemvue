@@ -103,13 +103,18 @@ function scaffold_experience() {
   // this.destinationRoot('experienceTemplate');
   const { category, name } = this.answers.xp.component;
   const className = this.answers.xp.component.className = changeCase.pascalCase(`${category} ${name}`);
+  this.answers.xp.generatorConfig = this.config.getAll();
   const templatePaths = [
     {from: '.content.xml', to: '.content.xml'},
     {from: 'componentTemplate.pug', to: `${name}.pug`},
-    {from: 'configFile.js', to: `${className}.js`},
+    {from: 'configFile.js', to: `${className}Config.js`},
     {from: 'index.js', to: `index.js`},
     {from: 'styles.scss', to: `styles.scss`},
     {from: 'styles.scss', to: `styles.scss`},
+    {from: 'publishLibs/.content.xml', to: `publishLibs/.content.xml`},
+    {from: '_cq_editConfig/.content.xml', to: `_cq_editConfig/.content.xml`},
+    {from: '_cq_design_dialog/.content.xml', to: `_cq_design_dialog/.content.xml`},
+    {from: '_cq_dialog/.content.xml', to: `_cq_dialog/.content.xml`}
   ];
   const { answers } = this;
   // this.fs.copy(
