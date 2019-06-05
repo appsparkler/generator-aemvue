@@ -66,7 +66,8 @@ function scaffold_component() {
     {from: 'publishLibs/.content.xml', to: `publishLibs/.content.xml`},
     {from: '_cq_editConfig/.content.xml', to: `_cq_editConfig/.content.xml`},
     {from: '_cq_design_dialog/.content.xml', to: `_cq_design_dialog/.content.xml`},
-    {from: '_cq_dialog/.content.xml', to: `_cq_dialog/.content.xml`}
+    {from: '_cq_dialog/.content.xml', to: `_cq_dialog/.content.xml`},
+    {from: '_cq_htmlTag/.content.xml', to: `_cq_htmlTag/.content.xml`}
   ];
   const { answers } = this;
   // this.fs.copy(
