@@ -3,6 +3,6 @@
   xmlns:cq="http://www.day.com/jcr/cq/1.0"
   xmlns:jcr="http://www.jcp.org/jcr/1.0"
   jcr:primaryType="cq:ClientLibraryFolder"
-  categories="[<%= answers.xp.generatorConfig.appName %>.xp.<%= answers.xp.component.category %>.<%= answers.xp.component.name %>]"
-  dependencies="[<%= answers.xp.generatorConfig.appName %>.chunkVendors,<%= answers.xp.generatorConfig.appName %>.chunkCommon]"
+  categories="[<%= answers.cmp.generatorConfig.appName %>.cmp.<%= answers.cmp.component.category %>.<%= answers.cmp.component.name %>]"
+  dependencies="[<%= answers.cmp.generatorConfig.appName %>.chunkVendors,<%= answers.cmp.generatorConfig.appName %>.chunkCommon]"
 />

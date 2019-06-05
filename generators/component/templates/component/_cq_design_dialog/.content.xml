@@ -5,8 +5,8 @@
   xmlns:jcr="http://www.jcp.org/jcr/1.0"
   xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
   jcr:primaryType="nt:unstructured"
-  jcr:title="<%= answers.xp.designDialog.title %>"
-  jcr:description="<%= answers.xp.designDialog.description %>"
+  jcr:title="<%= answers.cmp.designDialog.title %>"
+  jcr:description="<%= answers.cmp.designDialog.description %>"
   sling:resourceType="cq/gui/components/authoring/dialog"
 >
   <content jcr:primaryType="nt:unstructured" sling:resourceType="granite/ui/components/coral/foundation/container">

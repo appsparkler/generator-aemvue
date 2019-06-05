@@ -23,7 +23,7 @@ module.exports = class extends Generator {
   default() {}
 
   writing() {
-    scaffold_experience.call(this);
+    scaffold_component.call(this);
   }
 
   end() {
@@ -33,29 +33,29 @@ module.exports = class extends Generator {
 
 // private functions
 function set_config() {
-  const { xp } = this.answers;
-  let experienceConfig = this.config.get("experiences") || {};
-  experienceConfig[this.answers.xp.component.category] = experienceConfig[this.answers.xp.component.category] || {};
-  experienceConfig[this.answers.xp.component.category][this.answers.xp.component.name] = {
-    name: xp.component.name,
-    title: xp.component.title,
-    description: xp.component.description,
+  const { cmp } = this.answers;
+  let componentConfig = this.config.get("components") || {};
+  componentConfig[this.answers.cmp.component.category] = componentConfig[this.answers.cmp.component.category] || {};
+  componentConfig[this.answers.cmp.component.category][this.answers.cmp.component.name] = {
+    name: cmp.component.name,
+    title: cmp.component.title,
+    description: cmp.component.description,
     chunks: [
       "chunk-vendors",
       "chunk-common",
-      `experiences/global/${xp.component.name}/publishLibs`
+      `components/global/${cmp.component.name}/publishLibs`
     ]
   };
-  console.log(experienceConfig);
-  this.config.set("experiences", experienceConfig);
+  console.log(componentConfig);
+  this.config.set("components", componentConfig);
 }
 
-function scaffold_experience() {
+function scaffold_component() {
   const path = require('path');
-  // this.destinationRoot('experienceTemplate');
-  const { category, name } = this.answers.xp.component;
-  const className = this.answers.xp.component.className = changeCase.pascalCase(`${category} ${name}`);
-  this.answers.xp.generatorConfig = this.config.getAll();
+  // this.destinationRoot('componentTemplate');
+  const { category, name } = this.answers.cmp.component;
+  const className = this.answers.cmp.component.className = changeCase.pascalCase(`${category} ${name}`);
+  this.answers.cmp.generatorConfig = this.config.getAll();
   const templatePaths = [
     {from: '.content.xml', to: '.content.xml'},
     {from: 'componentTemplate.pug', to: `${name}.pug`},
@@ -70,35 +70,35 @@ function scaffold_experience() {
   ];
   const { answers } = this;
   // this.fs.copy(
-  //   this.templatePath("experience"),
-  //   this.destinationPath(`src/experiences/${answers.xp.component.category}/${answers.xp.component.name}`)
+  //   this.templatePath("component"),
+  //   this.destinationPath(`src/components/${answers.cmp.component.category}/${answers.cmp.component.name}`)
   // );
   // Copy All DOT (.) files
   // this.fs.copy(
-  //   this.templatePath('experience/**/.*'),
-  //   this.destinationPath(`src/experiences/${answers.xp.component.category}/${answers.xp.component.name}`)
+  //   this.templatePath('component/**/.*'),
+  //   this.destinationPath(`src/components/${answers.cmp.component.category}/${answers.cmp.component.name}`)
   // );
   templatePaths.forEach(key => {
     this.fs.copyTpl(
-      this.templatePath(path.join('experience', key.from)),
+      this.templatePath(path.join('component', key.from)),
       path.join(
           this.destinationRoot(),
-          'src/experiences',
-          answers.xp.component.category,
-          answers.xp.component.name,
+          'src/components',
+          answers.cmp.component.category,
+          answers.cmp.component.name,
           key.to
       ),
       this
     )
   });
   // this.fs.copyTpl(
-  //   this.templatePath(path.join('experience', 'componentTemplate.pug')),
+  //   this.templatePath(path.join('component', 'componentTemplate.pug')),
   //   path.join(
   //     this.destinationRoot(),
-  //     'src/experiences',
-  //     answers.xp.component.category,
-  //     answers.xp.component.name,
-  //     `${answers.xp.component.name}.pug`
+  //     'src/components',
+  //     answers.cmp.component.category,
+  //     answers.cmp.component.name,
+  //     `${answers.cmp.component.name}.pug`
   //   ),
   //   this
   // )
@@ -149,7 +149,7 @@ async function set_AnswersForPrompts() {
   const PROMPTS = GET_PROMPTS.call(this);
   this.answers = await this.prompt(PROMPTS);
   // change the case of the comonent to camelCase.
-  // this.answers.xp.component.name = changeCase.camelCase(this.answers.xp.component.name);
+  // this.answers.cmp.component.name = changeCase.camelCase(this.answers.cmp.component.name);
 }
 
 /*

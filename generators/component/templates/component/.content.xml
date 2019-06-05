@@ -4,6 +4,6 @@
   xmlns:cq="http://www.day.com/jcr/cq/1.0"
   xmlns:jcr="http://www.jcp.org/jcr/1.0"
   jcr:primaryType="cq:Component"
-  jcr:title="<%= answers.xp.component.title %>"
-  componentGroup="<%= answers.xp.component.group %>"
+  jcr:title="<%= answers.cmp.component.title %>"
+  componentGroup="<%= answers.cmp.component.group %>"
 />

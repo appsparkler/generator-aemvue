@@ -1,15 +1,15 @@
 import $ from 'jquery';
 import Vue from 'vue';
 //
-import <%= answers.xp.component.className %>ComponentConfig from './<%= answers.xp.component.className %>Config'
+import <%= answers.cmp.component.className %>ComponentConfig from './<%= answers.cmp.component.className %>Config'
 global.vueComponents = global.vueComponents || [];
-setup_<%= answers.xp.component.name %>Components();
+setup_<%= answers.cmp.component.name %>Components();
 
 // private functions
-function setup_<%= answers.xp.component.name %>Components() {
-    $('[is^=xp-<%= answers.xp.component.category %>-<%= answers.xp.component.name %>]').each(generate_<%= answers.xp.component.name %>Component);
+function setup_<%= answers.cmp.component.name %>Components() {
+    $('[is^=xp-<%= answers.cmp.component.category %>-<%= answers.cmp.component.name %>]').each(generate_<%= answers.cmp.component.name %>Component);
 }
 
-function generate_<%= answers.xp.component.name %>Component() {
-    vueComponents.push(new <%= answers.xp.component.className %>ComponentConfig(this));
+function generate_<%= answers.cmp.component.name %>Component() {
+    vueComponents.push(new <%= answers.cmp.component.className %>ComponentConfig(this));
 }

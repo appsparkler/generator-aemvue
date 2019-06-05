@@ -5,14 +5,14 @@ module.exports = function() {
     // COMPONENT
     {
       type: "input",
-      name: "xp.component.category",
+      name: "cmp.component.category",
       message: "category?",
       required: true,
       filter: userInput => camelCase(userInput),
       default: 'global'
     },{
         type: "input",
-        name: "xp.component.name",
+        name: "cmp.component.name",
         message: "name : ",
         required: true,
         filter: userInput => camelCase(userInput),
@@ -20,34 +20,34 @@ module.exports = function() {
 
     },{
         type: "input",
-        name: "xp.component.title",
+        name: "cmp.component.title",
         message: "title?",
         required: true,
         default: 'Component Title'
     },{
         type: "input",
-        name: "xp.component.description",
+        name: "cmp.component.description",
         message: "description?",
         required: true,
         default: 'Component Description'
     },{
         type: "input",
-        name: "xp.component.group",
-        message: "Experience group?",
+        name: "cmp.component.group",
+        message: "Component group?",
         required: true,
-        default: 'XT Experiences'
+        default: 'XT Components'
     },
 
     // DESIGN DIALOG
     {
         type: "input",
-        name: "xp.designDialog.title",
+        name: "cmp.designDialog.title",
         message: "Design dialog title?",
         required: true,
         default: 'DD Title'
     },{
         type: "input",
-        name: "xp.designDialog.description",
+        name: "cmp.designDialog.description",
         message: "Design dialog description?",
         required: true,
         default: 'DD description'
@@ -57,12 +57,12 @@ module.exports = function() {
     {
         type: "input",
         message: "Edit dialog title?",
-        name: "xp.editDialog.title",
+        name: "cmp.editDialog.title",
         default: 'ED Title'
     },{
         type: "input",
         message: "Edit dialog description?",
-        name: "xp.editDialog.description",
+        name: "cmp.editDialog.description",
         default: 'ED description...'
     }
   ];
