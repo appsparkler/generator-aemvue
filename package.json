@@ -35,8 +35,8 @@
     "npm": ">= 4.0.0"
   },
   "dependencies": {
-    "yeoman-generator": "^2.0.1",
     "chalk": "^2.1.0",
+    "yeoman-generator": "^4.0.1",
     "yosay": "^2.0.1"
   },
   "jest": {
@@ -72,6 +72,6 @@
     "pretest": "eslint .",
     "test": "jest"
   },
-  "repository": "appsparkler/generator-av",
+  "repository": "appsparkler/generator-aemvue",
   "license": "MIT"
 }
