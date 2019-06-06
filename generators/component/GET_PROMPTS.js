@@ -1,6 +1,7 @@
 /*eslint-disable*/
 module.exports = function() {
-  const { camelCase } = require('change-case');
+  const filters = require('../../commonModules/userInputFilters.js');
+
   const PROMPTS = [
     // COMPONENT
     {
@@ -8,19 +9,20 @@ module.exports = function() {
       name: "cmp.component.category",
       message: "category?",
       required: true,
-      filter: userInput => camelCase(userInput),
+      filter: filters.camelCase,
     },{
         type: "input",
         name: "cmp.component.name",
-        message: "name : ",
+        message: "name?",
         required: true,
-        filter: userInput => camelCase(userInput),
+        filter: filters.camelCase,
 
     },{
         type: "input",
         name: "cmp.component.title",
         message: "title?",
         required: true,
+        filter: filters.titleCase,
     },{
         type: "input",
         name: "cmp.component.description",
@@ -39,6 +41,7 @@ module.exports = function() {
         name: "cmp.designDialog.title",
         message: "Design dialog title?",
         required: true,
+        filter: filters.titleCase
     },{
         type: "input",
         name: "cmp.designDialog.description",
@@ -51,6 +54,7 @@ module.exports = function() {
         type: "input",
         message: "Edit dialog title?",
         name: "cmp.editDialog.title",
+        filter: filters.titleCase
     },{
         type: "input",
         message: "Edit dialog description?",

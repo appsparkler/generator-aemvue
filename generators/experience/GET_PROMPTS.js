@@ -12,7 +12,7 @@ module.exports = function() {
     },{
         type: "input",
         name: "xp.component.name",
-        message: "name : ",
+        message: "name?",
         required: true,
         filter: userInput => camelCase(userInput),
     },{
